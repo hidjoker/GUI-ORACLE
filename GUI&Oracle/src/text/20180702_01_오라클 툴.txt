@@ -1,0 +1,12 @@
+
+ + 오라클 툴
+
+  1. SQL*Plus
+	- Oracle DBMS가 제공하는 기본 Tool
+
+	- 윈도우콘솔(cmd창)에서 sqlplus라고 입력(sqlplus /nolog)
+	- 시작메뉴에서 'Run SQL Command Line'으로 실행
+
+
+  2. SQL*Developer 
+	- Oracle에서 제공하는 추가적인 Tool

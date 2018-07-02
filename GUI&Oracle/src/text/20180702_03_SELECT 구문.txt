@@ -1,0 +1,35 @@
+
+ + SELECT 구문
+  - 테이블에 저장된 데이터를 조회하는 명령어
+  - 반드시 FROM 절이 와야함
+
+
+
+ + 구문 형식
+
+  - SELECT * FROM tablename;
+	테이블 전체(모든 컬럼) 조회
+
+  - SELECT col1, col2, ... FROM tablename;
+	지정된 컬럼만 조회
+
+  - SELECT col1 AS alias1, col2, AS alias2, ... FROM tablename;
+	지정된 컬럼의 별칭을 적용하여 조회
+
+	ex)
+	  SELECT * FROM emp; -- 전체조회
+	  SELECT empno, ename FROM emp; -- empno,ename컬럼만 조회
+
+	  SELECT
+	    empno AS 사번,
+	    ename AS 사원이름
+	  FROM emp;
+
+
+
+ + FROM 절
+  - 조회되는 대상을 지정하는 절
+
+  - 테이블
+  - 뷰
+  - 인라인뷰(서브쿼리)

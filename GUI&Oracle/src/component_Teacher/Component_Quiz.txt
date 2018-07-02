@@ -1,0 +1,19 @@
+case KeyEvent.VK_5:	jCheckBoxEx();	break;
+	// 아이스 아메리카노, 수박주스, 아이스초코
+	// 선택하면 CheckBox의 텍스트를 콘솔 출력
+	// 선택할 때 발생하는 이벤트는 무엇???
+case KeyEvent.VK_6:	jRadioButtonEx();	break;
+	// 아이스 아메리카노, 수박주스, 아이스초코
+	// 선택하면 Radiobutton의 텍스트를 콘솔 출력
+	// 선택할 때 발생하는 이벤트는 무엇???
+	// 잘 안되면 ButtonGroup Class 찾아보기
+case KeyEvent.VK_7:	jListEx();	break;
+	// 신라면, 진라면, 오징어짬뽕, 왕뚜껑
+	// 선택한 List Item의 텍스트를 콘솔에 출력
+	// 선택할 때 발생하는 이벤트는 무엇???
+case KeyEvent.VK_8:	jComboBoxEx();	break;
+	// 신라면, 진라면, 오징어짬뽕, 왕뚜껑
+	// 선택한 List Item의 텍스트를 콘솔에 출력
+	// 선택할 때 발생하는 이벤트는 무엇???
+	// 콤보박스의 아이템을 수정해보기
+	// 수정하고 엔터 입력 시 이벤트 발생하는가?

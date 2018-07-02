@@ -1,0 +1,32 @@
+
+ + ORDER BY 절
+  - SELECT구문에서 사용
+  - 정렬을 위한 구문
+
+  - WHERE절 다음에 사용
+
+  - 오름차순(ASC)과 내림차순(DESC) 정렬이 있다
+   ( ASC가 기본값 )
+
+
+
+
+ + ORDER BY 구문
+
+  - ORDER BY 컬럼1, 컬럼2, ...
+
+
+
+
+ + NULL 데이터를 포함하는 컬럼 정렬
+
+  - 오름차순(ASC) 정렬일 경우 NULL데이터가 마지막에 나온다
+  - 내름차순(DESC) 정렬일 경우 NULL데이터가 처음에 나온다
+
+  - NULL데이터 순서를 변경 하려면 NULLS 키워드를 사용해야 함
+	NULLS FIRST
+	NULLS LAST
+
+	ex)
+	ORDER BY comm DESC NULLS LAST (이 구문 많이 사용됨)
+	ORDER BY comm ASC NULLS FIRST

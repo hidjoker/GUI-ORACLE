@@ -1,0 +1,56 @@
+
+ + WHERE 절
+  - 조건 절
+  - SELECT, UPDATE, DELETE 구문에 사용됨
+
+  - WHERE [조건절]
+
+	[조건절] -> 컬럼이름 연산자 조건값
+
+
+
+ + 연산자
+  - 비교 연산자
+	= 같다
+	<> != ^= 같지 않다
+	> 크다
+	< 작다
+	>= 크거나 같다
+	<= 작거나 같다
+
+  - 논리 연산자
+	AND 두 조건 모두 만족할 때 TRUE
+	OR 두 조건 중 하나라도 만족하면 TRUE
+	NOT 조건을 부정(논리 부정)
+
+  - 기타 연산자
+	BETWEEN a AND b : a와 b사이의 데이터 (a,b 포함)
+		ex) deptno BETWEEN 10 AND 20
+			( deptno>=10 AND deptno<=20 )
+
+		<-> NOT BETWEEN a AND b
+		ex) deptno NOT BETWEEN 10 AND 20
+
+
+	IN(list) : list의 값 중 어느 하나라도 일치하는 데이터
+		<-> NOT IN(list)
+
+		ex) deptno IN ( 10, 20 )
+
+
+
+	LIKE : 지정된 형식의 문자포맷으로 일치하는 데이터
+		<-> NOT LIKE
+
+		% : 여러 문자, 문자가 없는 경우도 포함
+		_ : 한 문자, 반드시 한 글자 있어야함
+
+		ex)
+		LIKE 'B%' -> B로 시작하는 모든 데이터
+		LIKE '%B%' -> B를 포함하는 모든 데이터
+		LIKE '_B%' -> 두번째 글자가 B인 모든 데이터
+		LIKE '%B' -> B로 끝나는 모든 데이터
+
+
+	IS NULL : null값을 가지는 데이터
+		<-> IS NOT NULL

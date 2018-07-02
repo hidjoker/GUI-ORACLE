@@ -1,0 +1,31 @@
+
+ + scott.sql 위치
+
+  C:\oraclexe\app\oracle\product\11.2.0\server\rdbms\admin\
+
+  폴더에서 scott.sql
+
+
+ + scott.sql 적용하기
+
+	윈도우 콘솔창 (cmd) 열기
+
+	sqlplus /nolog
+
+	conn system/1234;
+		-> conn sys as sysdba;
+		-> 1234 입력
+
+	'@' 타이핑만 해둔 상태에서 scott.sql 드래그&드랍
+		-> 파일 경로가 자동 입력됨
+
+	ALTER USER scott IDENTIFIED BY tiger;
+
+	conn scott/tiger;
+
+	show user;
+		-> USER is "SCOTT" 나오면 성공
+
+	SELECT * FROM dept;
+		-> 부서 정보가 나옴
+

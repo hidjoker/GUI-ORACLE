@@ -1,0 +1,41 @@
+
+ + DBMS, DataBase Management System
+
+  - 데이터베이스 관리 시스템
+
+  - 데이터베이스 : 데이터 저장소
+
+  ㅜ
+ + 오라클 DB
+  - Oracle DB Express Edition 에는 DB가 하나만 있다
+  - (SID : xe, xe가 DB이름)
+
+  - SID : orcl, Standard Edition의 DB이름
+
+  - 버전 : 11g Release 2
+
+
+ + 테이블, Table
+
+  - 데이터베이스 내에서 실제 데이터를 관리(저장)하는 단위
+
+  - 표 형식
+
+  - 행(row), 열(column) 으로 이루어져 있음
+
+  - 테이블은 소유자를 가짐
+  - 테이블은 소유자만 관리할 수 있다
+  - (단, 권한을 부여받으면 관리가능)
+
+
+ + SQL, Structed Query Language
+
+  - 구조적 질의 언어
+
+  - 데이터베이스를 제어, 관리하는 언어
+
+  - CRUD 작업을 수행함
+  - Create, Read, Update, Delete
+  - Insert, Select, Update, Delete
+
+  - 스크립트 언어 ( 읽으면서 바로 동작 )

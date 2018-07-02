@@ -1,0 +1,10 @@
+
+	+ 계정 락 풀기
+		계정 접속 3회 실패하면 락이 걸림
+
+	> conn system/1234
+	OR
+	> conn sys as sysdba
+		1234 입력
+
+	> ALTER USER scott ACCOUNT UNLOCK;

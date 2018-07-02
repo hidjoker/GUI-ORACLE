@@ -1,0 +1,12 @@
+	오라클 DBMS 설치 확인
+
+
+	윈도우 cmd 창에서
+
+	sqlplus /nolog 입력
+
+	conn sys as sysdba 입력하고
+
+	1234 비밀번호 입력
+
+	show user; 입력하면 "SYS"라고 나와야 함

@@ -1,0 +1,35 @@
+
+ + 오라클 Database 11g Express Edition
+	www.oracle.com
+	-> Menu
+	-> Developers
+	-> Downloads
+	-> Database
+	-> Database 11g Express Edition
+	-> License 동의
+	-> Windows 64bit 다운
+	-> 오라클 회원가입 및 로그인
+
+ + Oracle Sql Developer
+	www.oracle.com
+	-> Menu
+	-> Developers
+	-> Downloads
+	-> Developer Tools
+	-> SQL Developer
+
+	-> Windows64-bit wid JDK 8 included
+	또는
+	-> Windows 32-bit/64-bit
+	(둘 중 하나만 다운)
+	(아래꺼는 실행 시킬 때 JAVA HOME 설정 필요, 한번만)
+
+
+
+
+
+
+
+
+
+
