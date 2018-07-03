@@ -1,0 +1,18 @@
+
+ + 기본 컨테이너 (메인 프레임) 을 생성하는 방법
+
+  1. JFrame 객체를 생성해서 프레임 띄우기
+
+	JFrame jfr = new JFrame();
+	jfr.setVisible(true);
+
+
+  2. JFrame 클래스를 상속받아서 프레임 띄우기
+
+	public class MyFrame extends JFrame {
+
+	  public MyFrame() {
+	    setVisible(true);
+	  }
+
+	}

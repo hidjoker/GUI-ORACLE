@@ -1,0 +1,18 @@
+
+ + 스윙, Swing
+
+  - AWT를 이용하여 작성된 자바의 GUI 라이브러리
+
+  - AWT의 모든 기능을 가지고 있다
+
+  - 대부분의 스윙 클래스는 앞에 J가 붙어있다
+
+	ex)	AWT	->	Swing
+		Component->	JComponent
+		Frame	->	JFrame
+		Button	->	JButton
+		Label	->	JLabel
+
+  - javax.swing 패키지에 포함
+
+  - 스윙의 최상위 클래스 : JComponent
