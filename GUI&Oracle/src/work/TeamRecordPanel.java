@@ -1,5 +1,7 @@
 package work;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
@@ -13,7 +15,11 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 
 
 public class TeamRecordPanel extends JPanel{
@@ -62,16 +68,17 @@ public class TeamRecordPanel extends JPanel{
     	setLayout(null);
     	
     	
-    	//ÆÇ³Ú1
-    	//ÆÇ³Ú1 - ¼³Á¤
+    	//ÆÀ·¹ÄÚµå ÆÇ³Ú
+    	//ÆÀ·¹ÄÚµå ÆÇ³Ú - ¼³Á¤
 
     	tablePane = new JPanel();
     	tablePane.setBounds(PANEL_X, tablePane_Y, tablePane_WIDTH, tablePane_HEIGHT);
     	tablePane.setLayout(null);
     	tablePane.setBorder(BorderFactory.createLineBorder(Color.BLUE));
     	
-    	//ÆÇ³Ú1 - ÄÄÆ÷³ÍÆ®
-    	String[] columnNames = {"ºÎ¼­","Role","Leader","¼öÁ¤","Ãë¼Ò"};
+    	//ÆÀ·¹ÄÚµå ÆÇ³Ú - ÄÄÆ÷³ÍÆ®
+    	//		µ¥ÀÌÅÍ
+    	String[] columnNames = {"ºÎ ¼­","Role","Leader"};
     	Object[][] rowData = {
     			{"»çÀå½Ç","»çÀå","È«±æµ¿"},
     			{"Àç¹«°æ¿µÆÀ","Àç¹«°æ¿µ ÃÑ°ý","ÀÌ¼ø½Å"},
@@ -81,11 +88,41 @@ public class TeamRecordPanel extends JPanel{
     			{"±âÈ¹ÆÀ","ÇÁ·Î±×·¥ ±âÈ¹","³×ÀÌ¸¶¸£"}
     	};
     	
+    	//		Å×ÀÌºí ¼³Á¤
     	DefaultTableModel tbDefault = new DefaultTableModel(rowData, columnNames); 
     	tbTeamRecord = new JTable(tbDefault);
+    	tbTeamRecord.setFont(new Font("°íµñ",Font.BOLD,20));
+    	tbTeamRecord.setRowHeight(30);
+
+    	// Å×ÀÌºí ·»´õ
+    	DefaultTableCellRenderer render = new DefaultTableCellRenderer();
+    	render.setHorizontalAlignment(SwingConstants.CENTER);
     	
+    	// Å×ÀÌºí Çì´õ ¼³Á¤
+    	JTableHeader header = tbTeamRecord.getTableHeader();
+    	header.setPreferredSize(new Dimension(970, 50));
+    	header.setFont(new Font("°íµñ",Font.BOLD,20));
+    	header.setBackground(Color.CYAN);
+
+    	// Å×ÀÌºí ÄÃ·³ ¼³Á¤
+    	TableColumn firstColoumn = tbTeamRecord.getColumnModel().getColumn(0);
+    	firstColoumn.setPreferredWidth(200);
+    	firstColoumn.setMinWidth(200);
+    	firstColoumn.setMaxWidth(200);
+    	firstColoumn.setCellRenderer(render);
+    	TableColumn secondColoumn = tbTeamRecord.getColumnModel().getColumn(1);
+    	secondColoumn.setPreferredWidth(600);
+    	secondColoumn.setMinWidth(600);
+    	secondColoumn.setMaxWidth(600);
+    	TableColumn thirdColoumn = tbTeamRecord.getColumnModel().getColumn(2);
+    	thirdColoumn.setPreferredWidth(170);
+    	thirdColoumn.setMinWidth(170);
+    	thirdColoumn.setMaxWidth(170);
+    	thirdColoumn.setCellRenderer(render);
+    	 
+ 	
     	
-    	//ÆÇ³Ú2 - ½ºÅ©·Ñ ÆÇ³Ú
+    	//ÆÀ·¹ÄÚµåÆÇ³Ú - ½ºÅ©·Ñ ÆÇ³Ú
     	scrollPane = new JScrollPane(tbTeamRecord, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     	scrollPane.setBounds(5, 5, 970, 340);
@@ -97,8 +134,8 @@ public class TeamRecordPanel extends JPanel{
     	add(tablePane);
     	
     		
-    	//ÆÇ³Ú2
-    	//ÆÇ³Ú2 - ¼³Á¤
+    	//ÀÎÇ²ÆÇ³Ú
+    	//ÀÎÇ²ÆÇ³Ú - ¼³Á¤
     	
     	inputPane = new JPanel();
     	inputPane.setBounds(PANEL_X, inputPane_Y, inputPane_WIDTH, inputPane_HEIGHT);
@@ -106,7 +143,7 @@ public class TeamRecordPanel extends JPanel{
     	inputPane.setBorder(BorderFactory.createLineBorder(Color.BLUE));
     	
     	
-    	//ÆÇ³Ú 2 - ÄÄÆ÷³ÍÆ®
+    	//ÀÎÇ²ÆÇ³Ú - ÄÄÆ÷³ÍÆ®
     	
     	lblTeam = new JLabel("ºÎ ¼­");
     	lblTeam.setFont(lblTeam.getFont().deriveFont(18.0f));
@@ -159,15 +196,15 @@ public class TeamRecordPanel extends JPanel{
 
     	add(inputPane);
     	
-    	//ÆÇ³Ú3
-    	//ÆÇ³Ú3 - ¼³Á¤
+    	//¹öÆ°ÆÇ³Ú
+    	//¹öÆ°ÆÇ³Ú - ¼³Á¤
        	btnPane = new JPanel();
     	btnPane.setBounds(btnPane_X, btnPane_Y, btnPane_WIDTH, btnPane_HEIGHT);
     	btnPane.setLayout(null);
     	btnPane.setBorder(BorderFactory.createLineBorder(Color.BLUE));  	
     	
     	
-    	//ÆÇ³Ú4 - ÄÄÆ÷³ÍÆ®
+    	//¹öÆ°ÆÇ³Ú - ÄÄÆ÷³ÍÆ®
     	btnInsert = new JButton("»ý¼º/¼öÁ¤");
     	btnInsert.setBounds(5, 5, 150, 70);
     	btncancel = new JButton("Ãë¼Ò");
