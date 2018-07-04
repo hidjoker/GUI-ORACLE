@@ -1,0 +1,25 @@
+https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions002.htm#CJAEEJFC
+
+
+-- 'hELlo' 모두 대문자로 변환 -> HELLO
+-- 'hELlo' 모두 소문자로 변환 -> hello
+-- 'hELlo' 이니셜(첫글자) 대문자 -> Hello
+
+-- 'Alice Bob'의 문자열 길이 -> 9
+-- '안녕하세요'의 문자열 길이 -> 5
+
+-- 'Alice Bob' 문자열 바이트 수 -> 9
+-- 'ACE 안녕하세요'문자열 바이트 수 -> 19
+-- (오라클은 한글 인코딩을 UTF-8을 기본으로 하며
+--  UTF-8은 한글 한글자에 3바이트가 필요하다)
+
+-- 'ABCDEFGHI'에서 'D' 의 위치 -> 4
+-- 'ABCDEFGHI'에서 'DEF'문자열의 위치 ->4
+-- 'ABCDEFGHI'에서 'DF'문자열의 위치 -> 0
+-- '안녕하세요'에서 '하'문자열의 위치 -> 3
+-- 'ABCABCDDD'에서 'C'문자열의 위치 -> 3
+
+--'Oracle SQL Developer'에서 5번째 인덱스 이후의 문자열로 자르기
+--'Oracle SQL Developer'에서 5번째 인덱스부터 5글자로 자르기
+--'오라클 SQL'에서 2번째 인덱스부터 5글자로 자르기
+--'안녕하세요오라클'에서 3번째 부터 자르기

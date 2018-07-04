@@ -190,7 +190,7 @@ SELECT REGEXP_INSTR('ABCABCDDD','C')FROM dual;
 SELECT SUBSTR('Oracle SQL Developer',6) FROM dual;
 --'Oracle SQL Developer'에서 5번째 인덱스부터 5글자로 자르기
 SELECT SUBSTR('Oracle SQL Developer',6,5) FROM dual;
---'오라클 SQL'에서 2번쨰 인덱스부터 5글자로 자르기
+--'오라클 SQL'에서 2번째 인덱스부터 5글자로 자르기
 SELECT SUBSTR('오라클 SQL',2,5)FROM dual;
 SELECT SUBSTRb('오라클 SQL',2,5)FROM dual;
 --'안녕하세요오라클'에서 3번째 부터 자르기

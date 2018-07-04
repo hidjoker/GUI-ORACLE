@@ -1,0 +1,7 @@
+
+ + CASE 구문
+  - DECODE함수와 비슷한 동작을 하는 조건문
+
+  - CASE ~ WHEN THEN ~ END 로 구성
+
+  - WHEN THEN의 마지막에 ELSE 추가 가능

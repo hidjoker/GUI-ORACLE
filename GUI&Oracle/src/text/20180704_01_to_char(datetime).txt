@@ -1,0 +1,59 @@
+
+ + TO_CHAR( datetime )
+	DATE -> VARCHAR2
+
+ + TO_CHAR(날짜)
+ + TO_CHAR(날짜, 날짜형식 지정문자)
+
+ + 날짜형식 지정문자
+
+  - SCC : 세기
+ 
+  - YEAR, year, Year : 년도(영문)
+
+  - YYYY, YY, YYY, Y : 년도(숫자), Y개수는 년도표현 자리수
+
+  - MM : 월(숫자)
+  - MONTH, MON : 월(문자)
+
+  - Q : 분기(1~4)
+
+  - DD : 월 기준 날짜
+  - D : 주 기준 날짜
+  - DDD : 년 기준 날짜
+
+  - DAY : 요일
+  - DY : 요일 약자
+
+  - HH : 시
+  - HH12 : 시(12시간 표기법)
+  - HH24 : 시(24시간 표기법)
+
+  - MI : 분
+
+  - SS : 초
+
+  - FF : 밀리초
+
+  - AM, PM, A.M., P.M. : 오전/오후
+
+  ** 접미어 서식
+  - TH : 서수 영문
+  - SP : 기수 영문
+  - THSP, SPTH : 서수 영문
+   (앞에오는 서식의 UPPER, LOWER, INITCAP을 따른다)
+	ex) DdSP -> Four
+
+  ** 밀리초 서식
+  - FF : 밀리초 표현
+   (timesptamp 타입에서 사용가능)
+   (FF2, FF3 처럼 뒤에 숫자 붙여서 자리수 지정 가능)
+
+
+
+ + 날짜 타입
+  - DATE : 초까지 표현가능한 날짜시간타입
+  - TIMESTAMP : 밀리초까지 표현가능한 날짜시간타입
+
+  - sysdate : 현재시간(DATE 타입)
+  - systimestamp : 현재시간(TIMESTAMP 타입)

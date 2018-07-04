@@ -1,0 +1,20 @@
+ + SELECT 작성 순서(문법)
+	1 - SELECT
+	2 - FROM
+	3 - WHERE
+	4 - GROUP BY
+	5 - HAVING
+	6 - ORDER BY
+
+ + SELECT 수행 순서
+	1 - FROM
+	2 - WHERE
+	3 - GROUP BY
+	4 - HAVING
+	5 - SELECT
+	6 - ORDER BY
+
+* 수행 순서에 따라 Alias도 함께 반영된다
+	-> SELECT에 지정한 Alias 가 ORDER BY에 적용된다
+	-> SELECT에 지정한 Alias를 WHERE절에서 사용할 수 없다
+* WHERE절에서 그룹함수를 사용할 수 없다(GROUP BY 전)

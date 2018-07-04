@@ -1,0 +1,38 @@
+
+ + 단일 행 함수, Single Row Function
+
+  - 숫자 함수, Numeric Function
+	Java의 Math클래스의 메소드들과 유사함
+
+
+  - 문자 함수, Character Function
+	1. 반환값이 문자인 문자함수
+	2. 반환값이 숫자인 문자함수
+
+  - 날짜 함수, Datetime Function
+
+	DATE, TIMESTAMP, INTERVAL 타입에 적용되는 날짜관련 함수
+
+
+	** sysdate
+	  현재날짜(시간포함)을 반환하는 함수
+	  매개변수없음
+	   sysdate() 형식으로 사용하지 않고
+	  sysdate 라고만 사용한다
+
+	ex) SELECT sysdate FROM dual;
+	
+
+
+  - (형)변환 함수, Conversion Function
+
+	TO_NUMBER : NUMBER 포맷의 VARCHAR2 ---> NUMBER
+
+	TO_CHAR : NUMBER, DATETIME ---> 원하는 포맷의 VARCHAR2
+
+	TO_DATE : DATETIME 포맷의 VARCHAR2 ---> DATETIME
+
+		TO_CHAR			  TO_DATE
+    숫자	----->      문자	  ----->	날짜
+    (NUMBER)	<-----      (VARCHAR2)	  <-----	(DATETIME)
+		TO_NUMBER		  TO_CHAR
