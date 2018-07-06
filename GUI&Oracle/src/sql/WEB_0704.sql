@@ -43,11 +43,11 @@
 SELECT
 --    to_char(sysdate,'YYYY/MM/DD HH24:MI:SS DAY'),
 --    to_char(sysdate,'SCC'),
---    to_char(to_date('1987/01/02'),'SCC')
+--    to_char(to_date('1987/01/02'),'SCC'),
 
 --    to_char(sysdate,'YEAR'),
 --    to_char(sysdate,'year'),
---    to_char(sysdate,'Year')
+--    to_char(sysdate,'Year'),
 --    to_char(sysdate,'YYYY'),
 --    to_char(sysdate,'YY'),
 --    to_char(sysdate,'YYY'),
@@ -56,7 +56,7 @@ SELECT
 
 --    to_char(sysdate,'MM'),
 --    to_char(sysdate,'MONTH'),
---    to_char(sysdate,'MON')
+--    to_char(sysdate,'MON'),
 
 --    to_char(sysdate,'DD'), --월 날짜
 --    to_char(sysdate,'D'), --주 날짜(일요일부터 1)
@@ -69,7 +69,7 @@ SELECT
 --    to_char(to_date('2018/01/01'),'Q')"20180101",
 --    to_char(to_date('2018/04/01'),'Q')"20180401",
 --    to_char(to_date('2018/07/01'),'Q')"20180701",
---    to_char(to_date('2018/10/01'),'Q')"20181001"
+--    to_char(to_date('2018/10/01'),'Q')"20181001",
 
 --    to_char(sysdate,'HH'),
 --    to_char(sysdate,'HH12'),
@@ -81,7 +81,7 @@ SELECT
 --    to_char(sysdate,'PM'), --'P.M.'같음 서식문자라 AM,PM상관없이 기준시에 따라 오전,오후 표시
     
 --    to_char(sysdate,'YYYY"년" MM"월" DD"일"' || 
---        ' AM HH24"시" MI"분" ss"초" DAY') --" "안에 문자열을 표시해 줄 수 있음
+--        ' AM HH24"시" MI"분" ss"초" DAY'), --" "안에 문자열을 표시해 줄 수 있음
 
 --    to_char(sysdate,'HH:MI YY-MM/DD'),
 --    to_char(sysdate-1,'DDth'),
@@ -89,7 +89,7 @@ SELECT
 --    to_char(sysdate,'DDSPTH'),
 
 --    to_char(sysdate,'SYYYY'),
---    to_char(to_date(-500,'SYYYY'),'SYYYY'),
+    to_char(to_date(-500,'SYYYY'),'SYYYY'),
 
 
 -- + 날짜 타입
@@ -261,7 +261,8 @@ ORDER BY deptno;
 -- cnt, tot_sal, avg_sal -> 부서별 통계
 -- avg_sal -> 소수점 2자리까지
 
-SELECT
+
+ELECT
     deptno, 
     CASE deptno
         WHEN 10 THEN '회계팀'

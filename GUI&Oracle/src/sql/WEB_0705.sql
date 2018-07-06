@@ -202,8 +202,10 @@ HAVING avg(sal) >(
 ) 
 ORDER BY deptno;
 
+
+
 -- 인라인 뷰
-SELECT E.deptno, dept.dname, avg_sal
+SELECT E.deptno, dname, avg_sal
 FROM(
     SELECT deptno, ROUND(avg(sal),2) AS avg_sal
     FROM emp
@@ -254,6 +256,23 @@ SELECT * FROM dept;
 -- 40번 부서는 0명이라고 출력
 -- 서브쿼리 활용, 조인 활용
 -- deptno, dname, cnt_employee
+
+-- 서브쿼리 활용
+SELECT deptno, dname,
+    (SELECT count(*) FROM emp E WHERE D.deptno = E.deptno) cnt_employee
+FROM dept D;
+
+
+-- 조인 활용
+SELECT d.deptno, dname, count(E.empno) cnt_employ
+FROM emp e
+    RIGHT OUTER JOIN dept d
+    ON e.deptno = d.deptno
+GROUP BY d.deptno, dname
+ORDER BY d.deptno;
+
+
+
 
 
 -- 스칼라 서브쿼리
