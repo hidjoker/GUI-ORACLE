@@ -21,6 +21,16 @@
 --		col > ALL(A, B, C) : 최대값보다 큰 결과들 조회
 --	- EXISTS : 서브쿼리의 결과가 메인쿼리에 존재하면 조회
 
+
+-- + 집합연산자
+--	- 두 개 이상의 쿼리 결과를 하나로 합치는 연산자
+--	- 컬럼의 개수와 이름이 같아야 한다
+--	- UNION : 합집합
+--	- UNION ALL : 합집합, 중복허용
+--	- INTERSECT : 교집합
+--	- MINUS : 차집합
+
+
 -- SALESMAN들의 급여
 SELECT DISTINCT sal FROM emp
 WHERE job = 'SALESMAN'
@@ -29,6 +39,7 @@ ORDER BY sal;
 -- SALESMAN 들과 급여가 같은 사원
 SELECT * FROM emp
 WHERE sal IN (1250, 1500, 1600);
+
 
 -- SALESMAN 들의 급여와 같은 페이를 받는 모든 직원
 -- IN
