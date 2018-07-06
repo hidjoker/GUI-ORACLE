@@ -19,10 +19,7 @@ public class EmployeeDto {
 	private String lostIdQuestion;
 	private String lostIdAnswer;
 	
-	
-	
-	
-	
+
 	
 	public int getEmployeeId() {
 		return employeeId;
