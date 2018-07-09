@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -29,7 +31,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 
-public class TeamRecordPanel extends JPanel implements ActionListener, TableModelListener, ListSelectionListener{
+public class TeamRecordPanel extends JPanel implements ActionListener, ListSelectionListener{
 
 	//상수
 	private static final int tablePane_Y=0;
@@ -47,7 +49,12 @@ public class TeamRecordPanel extends JPanel implements ActionListener, TableMode
 			
 	private static final int PANEL_X=0;
 	
-	  
+	//DAO & DTO
+	private InJungDao dao = null;
+	private TeamDto dto = null;
+	private ArrayList<TeamDto> dtos = null;
+
+	
     //테이블 판넬
     private JPanel tablePane;
     //테이블 판넬 - 컴포넌트
@@ -85,32 +92,58 @@ public class TeamRecordPanel extends JPanel implements ActionListener, TableMode
     	tablePane.setLayout(null);
     	tablePane.setBorder(BorderFactory.createLineBorder(Color.BLUE));
     	
-    	//팀레코드 판넬 - 컴포넌트
-    	//		데이터
-    	String[] columnNames = {"부 서","Role","Leader"};
-    	Object[][] rowData = {
-    			{"사장실","사장","홍길동"},
-    			{"재무경영팀","재무경영 총괄","정지훈"},
-    			{"인사관리팀","인사관리","권미현"},
-    			{"개발1팀","프로그램 개발","배창환"},
-    			{"개발2팀","프로그램 개발","송영준"},
-    			{"기획팀","프로그램 기획","송주현"},
-    			{"영업팀","프로그램 마케팅","이현우"}
-    	};
     	
-    	//		테이블 설정
-    	DefaultTableModel tbDefault = new DefaultTableModel(rowData, columnNames); 
+    	//DAO객체 받아오기
+    	dao = InJungDao.getInstance();
+    	
+    	//DAO객체 getAllTeam메소드로 TeamDto LIST 받기
+    	dtos = dao.getAllTeam();
+    	
+ 	
+    	//열 Vector 설정
+    	Vector<String> column = new Vector<>();
+    	column.addElement("부 서");
+    	column.addElement("Role");
+    	column.addElement("Leader");
+    	
+    	
+    	//테이블 설정
+    	DefaultTableModel tbDefault = new DefaultTableModel(column, 0); 
     	tbTeamRecord = new JTable(tbDefault);
     	tbTeamRecord.setFont(new Font("고딕",Font.BOLD,20));
     	tbTeamRecord.setRowHeight(40);
     	tbTeamRecord.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    	
+    	
+    	//dtos List Vector에 담기  	
+    	for(int i=0;i< dtos.size();i++) {
+        	Vector<String> row = new Vector<>();
+    		row.addElement(dtos.get(i).getTeamName());
+    		row.addElement(dtos.get(i).getTeamRole());
+    		row.addElement(dtos.get(i).getTeamLeaderName());  		
+    		tbDefault.addRow(row);
+    	}
+   	
+    	
+//    	//팀레코드 판넬 - 컴포넌트
+//    	//		데이터
+//    	Object[][] rowData = {
+//    			{"사장실","사장","홍길동"},
+//    			{"재무경영팀","재무경영 총괄","정지훈"},
+//    			{"인사관리팀","인사관리","권미현"},
+//    			{"개발1팀","프로그램 개발","배창환"},
+//    			{"개발2팀","프로그램 개발","송영준"},
+//    			{"기획팀","프로그램 기획","송주현"},
+//    			{"영업팀","프로그램 마케팅","이현우"}
+//    	};
+    	
+
 
     	// 테이블 렌더
     	DefaultTableCellRenderer render = new DefaultTableCellRenderer();
     	render.setHorizontalAlignment(SwingConstants.CENTER);
     	
-    	// 테이블 모델
-    	TableModel model = tbTeamRecord.getModel();
+    	// 테이블 셀렉션 모델
     	tbTeamRecord.getSelectionModel().addListSelectionListener(this);
     	
     	// 테이블 헤더 설정
@@ -241,7 +274,6 @@ public class TeamRecordPanel extends JPanel implements ActionListener, TableMode
     	
     	
     	//리스너 설정
-    	model.addTableModelListener(this);
     	btnInsert.addActionListener(this);
     	btnCancel.addActionListener(this);
     	btnEdit.addActionListener(this);
@@ -267,14 +299,6 @@ public class TeamRecordPanel extends JPanel implements ActionListener, TableMode
 			
 		}
 	}
-
-
-	@Override
-	public void tableChanged(TableModelEvent e) {
-		
-		
-	}
-
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
