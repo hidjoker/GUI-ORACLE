@@ -1,0 +1,17 @@
+
+ + 테이블 생성
+  - 데이터 없이 빈 테이블 생성
+emp_hire TABLE : empno, ename, hiredate
+emp_sal TABLE : empno, ename, sal
+
+ + INSERT ALL을 이용하여
+	hiredate가 '1981/06/01' 이전인 사원을 emp_hire에 삽입
+	sal이 2000보다 높은 사람을 emp_sal에 삽입
+
+ + 결과
+  - emp_hire			|	  - emp_sal
+7369	SMITH	80/12/17	|	7566	JONES	2975
+7499	ALLEN	81/02/20	|	7698	BLAKE	2850
+7521	WARD	81/02/22	|	7782	CLARK	2450
+7566	JONES	81/04/02	|	7839	KING	5000
+7698	BLAKE	81/05/01	|	7902	FORD	3000

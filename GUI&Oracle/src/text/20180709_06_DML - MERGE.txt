@@ -1,0 +1,39 @@
+
+ + DML, Data Manipulation Language, 데이터 조작어
+ 
+  - MERGE
+
+	조건에 따라서
+
+	결과가 존재할 경우 UPDATE (or DELETE)
+	결과가 존재하지 않을 경우 INSERT 를
+	수행하도록 하는 하나의 구문으로 작성하는 것
+
+
+	[구문]
+
+	MERGE INTO table_name
+	USING (
+		SELECT 절
+	)
+	ON ( 조건절 )
+	WHEN MATCHED
+		THEN 구문
+	WHEN NOT MATCHED
+		THEN 구문;
+
+	-> INTO : 삽입,갱신,삭제 가 이루어지는 테이블
+
+	-> USING : 비교할 소스테이블 or 서브쿼리(인라인뷰)
+
+	-> ON : WHEN절에서 반응할 조건
+
+	-> WHEN MATCHED
+		ON에서 지정한 조건을 만족하는 결과가 존재할 때
+
+	-> WHEN NOT MATCHED
+		ON에서 지정한 조건에 만족한 결과가 없을 때
+
+
+	** WHEN MATCHED구문에 UPDATE or DELETE
+	** WHEN NOT MATCHED구문에 INSERT

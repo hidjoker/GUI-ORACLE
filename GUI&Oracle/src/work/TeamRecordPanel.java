@@ -18,6 +18,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -27,7 +29,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 
-public class TeamRecordPanel extends JPanel implements ActionListener, TableModelListener{
+public class TeamRecordPanel extends JPanel implements ActionListener, TableModelListener, ListSelectionListener{
 
 	//상수
 	private static final int tablePane_Y=0;
@@ -109,6 +111,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, TableMode
     	
     	// 테이블 모델
     	TableModel model = tbTeamRecord.getModel();
+    	tbTeamRecord.getSelectionModel().addListSelectionListener(this);
     	
     	// 테이블 헤더 설정
     	JTableHeader header = tbTeamRecord.getTableHeader();
@@ -268,6 +271,13 @@ public class TeamRecordPanel extends JPanel implements ActionListener, TableMode
 
 	@Override
 	public void tableChanged(TableModelEvent e) {
+		
+		
+	}
+
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
 		
 		
 	}

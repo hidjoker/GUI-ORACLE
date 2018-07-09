@@ -1,0 +1,43 @@
+
+ + 트랜잭션, Transaction
+  - 데이터를 처리하는 일련의 작업 단위
+
+  - 논리적인 작업단위
+  - 일련의 작업들의 성공 or 실패를 결정짓는 단위
+
+  - 성공 시 -> DB 영구 반영 -> commit
+  - 실패 시 -> 트랜잭션 전부 미반영 -> rollback
+
+  - 트랜잭션 발생 SQL
+	INSERT, UPDATE, DELETE
+
+
+
+ + 트랜잭션의 상태 변화
+
+  - 트랜잭션의 시작
+	실행 가능한 SQL문장이 수행될 때
+	INSERT, UPDATE, DELETE
+
+  - 트랜잭션의 종료
+	COMMIT 또는 ROLLBACK을 수행
+
+	DDL이나 DCL 문장 수행
+
+	기계 장애 또는 시스템 충돌
+
+	사용자의 정상적인 DB 종료
+
+
+  - Auto Commit(자동 반영) 상황
+	DDL, DCL이 완료되는 시점
+	SQL*Plus의 정상 종료
+
+  - Auto Rollback(자동 미반영) 상황
+	시스템의 비정상적인 종료
+	SQL*Plus의 비정상 종료
+
+
+  ** Commit, Rollback
+	DCL(Data Control Language)에 포함됨
+	TCL(Transaction Control Language)이라고도 부름

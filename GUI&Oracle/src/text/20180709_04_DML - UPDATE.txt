@@ -1,0 +1,13 @@
+
+ + DML, Data Manipulation Language, 데이터 조작어
+ 
+  - UPDATE
+
+	테이블의 행을 수정하는 구문
+
+
+	[구문]
+	UPDATE table_name
+	SET col1 = 변경값1, col2=변경값2, ...
+	WHERE 조건;
+

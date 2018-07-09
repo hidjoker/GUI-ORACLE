@@ -1,0 +1,36 @@
+
+ + DDL, Data Definition Language, 데이터 정의어
+
+  - DB객체(테이블, 뷰, 등등)을 생성, 변경, 삭제할 수 있는 SQL
+
+  - 구문
+	CREATE	- 생성
+	ALTER	- 변경
+	DROP	- 삭제
+
+
+  - CREATE TABLE 구문
+
+	CREATE TABLE table_name (
+		컬럼명1 자료형1,
+		컬럼명2 자료형2,
+		...
+	);
+
+
+	CREATE TABLE table_name
+	AS
+	SELECT 구문
+
+
+	컬럼명 중복 불가
+	컬럼은 반드시 자료형이 명시되어야함
+
+
+
+ + 테이블, TABLE, TB
+  - 데이터베이스의 데이터 저장 기본단위
+
+  - 행(row, 레코드)과 열(column, col, 컬럼)으로 구성됨
+
+  - 연관성있는 데이터끼리 독립적으로 구성한다
