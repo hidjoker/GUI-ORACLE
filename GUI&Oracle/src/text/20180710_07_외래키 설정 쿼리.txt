@@ -1,0 +1,26 @@
+
+ + 외래키 지정 방식
+
+  - 방법1 : 컬럼설정 이후에 CONSTRAINT로 지정하기
+  CREATE TABLE table_name
+  (
+	col1 type1,
+	col2 type2,
+	... ,
+	CONSTRAINT constraint_name
+		FOREIGN KEY ( col1 )
+		REFERENCES r_table_name ( r_pk )
+  );
+
+  - 방법2 : 테이블 생성 후 ALTER TABLE로 지정하기
+  ALTER TABLE table_name
+  ADD CONSTRAINT constraint_name
+	FOREIGN KEY ( col1 )
+	REFERENCES r_table_name ( r_pk );
+
+
+
+ + 제약조건 삭제 - FK삭제
+ + 제약조건 비활성화 - FK 잠깐 끄기
+ + 제약조건 활성화 - 비활성화된 FK 활성화하기
+  - PK와 동일하게 적용됨

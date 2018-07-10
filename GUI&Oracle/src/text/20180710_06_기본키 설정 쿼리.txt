@@ -1,0 +1,50 @@
+
+ + 기본키 지정 방식
+
+  - 방법1 : 컬럼에 제약조건이름을 명시하면서 지정하기
+  CREATE TABLE table_name
+  (
+	col1 type1 CONSTRAINT cons_name PRIMARY KEY,
+	col2 type2,
+	...
+  );
+
+
+  - 방법2 : 컬럼에 제약조건이름없이 지정하기
+  CREATE TABLE table_name
+  (
+	col1 type1 PRIMARY KEY,
+	col2 type2,
+	...
+  );
+
+  - 방법3 : 컬럼설정 이후에 CONSTRAINT 키워드로 지정하기
+  CREATE TABLE table_name
+  (
+	col1 type1,
+	col2 type2,
+	... ,
+	CONSTRAINT constraint_name PRIMARY KEY ( col1, col2, ... )
+  );
+
+  - 방법4 : 테이블 생성 이후 ALTER TABLE로 지정하기
+  ALTER TABLE table_name
+  ADD CONSTRAINT constraint_name PRIMARY KEY ( col1, col2, ... );
+
+
+
+ + 제약조건 삭제 - PK삭제
+  ALTER TABLE table_name
+  DROP CONSTRAINT constraint_name;
+
+
+
+ + 제약조건 비활성화 - PK 잠깐 끄기
+  ALTER TABLE table_name
+  DISABLE CONSTRAINT constraint_name;
+
+
+
+ + 제약조건 활성화 - 비활성화된 PK 활성화하기
+  ALTER TABLE table_name
+  ENABLE CONSTRAINT constraint_name;

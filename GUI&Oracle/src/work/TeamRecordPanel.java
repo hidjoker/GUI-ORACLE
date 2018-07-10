@@ -232,9 +232,10 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
       	//콤보박스에 employee DTO집어넣기
     	dtos_Employee=dao.getAllEmployee();
     	String data[] = new String[dtos_Employee.size()+1];
+    	data[0] = "";
 
     	for(int i=0 ; i<dtos_Employee.size() ; i++) {
-    		cbLeader.add(dtos_Employee.get(i).getName()+"(사번:"+dtos_Employee.get(i).getEmployeeId()+")")
+    		data[i+1] = dtos_+dtos_Employee.get(i).getEmployeeId()
     	}
     	
     	//콤보박스 설정
