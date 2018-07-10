@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -51,8 +52,9 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 	
 	//DAO & DTO
 	private InJungDao dao = null;
-	private TeamDto dto = null;
-	private ArrayList<TeamDto> dtos = null;
+	private TeamDto dto_Team = null;
+	private ArrayList<TeamDto> dtos_Team = null;
+	private ArrayList<EmployeeDto> dtos_Employee = null;
 
 	
     //테이블 판넬
@@ -69,7 +71,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     private JLabel lblLeader;
     private JTextField txtTeam;
     private JTextField txtRole;
-    private JTextField txtLeader;
+    private JComboBox<String> cbLeader;
     
     //버튼 판넬
     private JPanel btnPane;
@@ -97,7 +99,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	dao = InJungDao.getInstance();
     	
     	//DAO객체 getAllTeam메소드로 TeamDto LIST 받기
-    	dtos = dao.getAllTeam();
+    	dtos_Team = dao.getAllTeam();
     	
  	
     	//열 Vector 설정
@@ -115,15 +117,16 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	tbTeamRecord.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     	
     	
-    	//dtos List Vector에 담기  	
-    	for(int i=0;i< dtos.size();i++) {
+    	//행 Vector에 TeamDto들 담기  	
+    	for(int i=0;i< dtos_Team.size();i++) {
         	Vector<String> row = new Vector<>();
-    		row.addElement(dtos.get(i).getTeamName());
-    		row.addElement(dtos.get(i).getTeamRole());
-    		row.addElement(dtos.get(i).getTeamLeaderName());  		
-    		tbDefault.addRow(row);
+    		row.addElement(dtos_Team.get(i).getTeamName());
+    		row.addElement(dtos_Team.get(i).getTeamRole());
+    		row.addElement(dtos_Team.get(i).getTeamLeaderName());  		
+    		tbDefault.addRow(row);	
     	}
-   	
+    	
+    	
     	
 //    	//팀레코드 판넬 - 컴포넌트
 //    	//		데이터
@@ -225,20 +228,29 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	txtRole.setBackground(Color.white);
     	txtRole.setForeground(Color.BLACK);
     	
-    	txtLeader = new JTextField();
-    	txtLeader.setBounds(150, 105, 500, 45);
-    	txtLeader.setFont(lblLeader.getFont());
-    	txtLeader.setEditable(true);
-    	txtLeader.setBackground(Color.white);
-    	txtLeader.setForeground(Color.BLACK);
+
+      	//콤보박스에 employee DTO집어넣기
+    	dtos_Employee=dao.getAllEmployee();
+    	String data[] = new String[dtos_Employee.size()+1];
+
+    	for(int i=0 ; i<dtos_Employee.size() ; i++) {
+    		cbLeader.add(dtos_Employee.get(i).getName()+"(사번:"+dtos_Employee.get(i).getEmployeeId()+")")
+    	}
     	
+    	//콤보박스 설정
+    	cbLeader = new JComboBox<>(data);
+    	cbLeader.setBounds(150, 105, 500, 45);
+    	cbLeader.setFont(lblLeader.getFont());
+    	cbLeader.setEditable(true);
+    	cbLeader.setBackground(Color.white);
+    	cbLeader.setForeground(Color.BLACK);
     	
     	inputPane.add(lblTeam);
     	inputPane.add(lblRole);
     	inputPane.add(lblLeader);
     	inputPane.add(txtTeam);
     	inputPane.add(txtRole);
-    	inputPane.add(txtLeader);
+    	inputPane.add(cbLeader);
     	
     	add(inputPane);
     	
@@ -249,8 +261,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	btnPane.setBounds(btnPane_X, btnPane_Y, btnPane_WIDTH, btnPane_HEIGHT);
     	btnPane.setLayout(null);
     	btnPane.setBorder(BorderFactory.createLineBorder(Color.BLUE));  	
-    	
-    	
+    		
     	//버튼판넬 - 컴포넌트
     	btnInsert = new JButton("생성");
     	btnInsert.setFont(new Font("고딕",Font.BOLD,16));
@@ -272,14 +283,12 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	 	
     	add(btnPane);
     	
-    	
     	//리스너 설정
     	btnInsert.addActionListener(this);
     	btnCancel.addActionListener(this);
     	btnEdit.addActionListener(this);
     	btnDelete.addActionListener(this);
-   	
-    	
+   	 	
 	}
 
 
@@ -287,10 +296,16 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==btnInsert) {
-			
+			dto_Team = new TeamDto();
+			dto_Team.setTeamName(txtTeam.getText());
+			dto_Team.setTeamRole(txtRole.getText());
+			dto_Team.setTeamLeaderName((String)cbLeader.getSelectedItem()); //수정 요망
+			dao.insertTeam(dto_Team);
 		}
 		if(e.getSource()==btnCancel) {
-			
+			txtTeam.setText("");
+			txtRole.setText("");
+			cbLeader.setSelectedIndex(0);
 		}
 		if(e.getSource()==btnDelete) {
 			
