@@ -231,11 +231,10 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 
       	//콤보박스에 employee DTO집어넣기
     	dtos_Employee=dao.getAllEmployee();
-    	String data[] = new String[dtos_Employee.size()+1];
-    	data[0] = "";
+    	String data[] = new String[dtos_Employee.size()];
 
     	for(int i=0 ; i<dtos_Employee.size() ; i++) {
-    		data[i+1] = dtos_+dtos_Employee.get(i).getEmployeeId()
+    		data[i] = dtos_Employee.get(i).getName()+" (사번 : "+dtos_Employee.get(i).getEmployeeId()+")";
     	}
     	
     	//콤보박스 설정
@@ -300,7 +299,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 			dto_Team = new TeamDto();
 			dto_Team.setTeamName(txtTeam.getText());
 			dto_Team.setTeamRole(txtRole.getText());
-			dto_Team.setTeamLeaderName((String)cbLeader.getSelectedItem()); //수정 요망
+			dto_Team.setTeamLeaderName(split()); 
 			dao.insertTeam(dto_Team);
 		}
 		if(e.getSource()==btnCancel) {
@@ -309,6 +308,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 			cbLeader.setSelectedIndex(0);
 		}
 		if(e.getSource()==btnDelete) {
+			
 			
 		}
 		if(e.getSource()==btnEdit) {
