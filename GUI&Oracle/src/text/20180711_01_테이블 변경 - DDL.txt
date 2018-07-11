@@ -1,0 +1,58 @@
+
+ + 테이블 변경 - ALTER
+
+  - ALTER TABLE
+	테이블 구조(스키마) 변경하기 위한 DDL
+
+	 테이블 지정 이후에 어떤 변경을 수행할 지에 따라
+	키워드가 달라짐
+
+	ADD - 컬럼 추가
+	MODIFY - 컬럼 수정
+	DROP - 컬럼 삭제
+
+
+  - ALTER TABLE ~ ADD
+	~ 테이블에 새 컬럼 추가
+	마지막 컬럼ID가 부여된다
+
+
+  - ALTER TABLE ~ MODIFY
+	~ 테이블의 컬럼 변경
+	데이터가 있을 때, 없을 때 동작이 다르다
+
+	데이터타입을 변경하거나 크기를 변경할 수 있다
+
+
+		자료 없음	자료 있음
+	타입	변경가능	변경불가
+	크기	변경가능	존재하는 자료보다 작게 불가
+
+	**예외 : CHAR와 VARCHAR2는 자료가 있어도 타입변경 가능
+
+
+  - ALTER TABLE ~ DROP
+	컬럼 삭제
+
+
+  - ATLER TABLE ~ SET UNUSED
+	삭제는 하지않지만 컬럼을 비활성화(복구 불가)
+
+	 DB서비스가 동작중일 때 DROP작업을 수행하면
+	성능저하를 유발하기 때문에 비활성화만 해둔다
+
+
+  - ALTER TABLE ~ DROP UNUSED COLUMNS
+	비활성화 된 컬럼들 실제 삭제
+
+
+  - ALTER TABLE ~ RENAME
+	이름 수정
+
+	테이블명 또는 컬럼명 변경할 때 사용
+
+	- 컬럼명 변경
+	ALTER TABLE ~ RENAME COLUMN 기존col TO 새col
+
+	- 테이블명 변경
+	ALTER TABLE ~ RENAME TO 새테이블명

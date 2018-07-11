@@ -123,7 +123,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     		row.addElement(dtos_Team.get(i).getTeamName());
     		row.addElement(dtos_Team.get(i).getTeamRole());
     		row.addElement(dtos_Team.get(i).getTeamLeaderName());  		
-    		tbDefault.addRow(row);	
+    		tbDefault.addRow(row);
     	}
     	
     	
@@ -305,7 +305,6 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 			dto_Team.setTeamLeaderId(arr[1]);
 			dao.insertTeam(dto_Team);
 			
-			
 		}
 		if(e.getSource()==btnCancel) {
 			txtTeam.setText("");
@@ -317,7 +316,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 			
 		}
 		if(e.getSource()==btnEdit) {
-			tbTeamRecord.getsel
+			tbTeamRecord
 		}
 	}
 

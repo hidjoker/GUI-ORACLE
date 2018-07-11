@@ -1,0 +1,41 @@
+
+ + 객체 권한
+
+  - 대표적인 객체 권한
+	SELECT : 객체 조회 권한
+	INSERT : 삽입 권한
+	UPDATE : 갱신 권한
+	DELETE : 삭제 권한
+
+	ALTER : 객체 스키마 변경 권한
+
+	RENAME : 이름 변경 권한
+
+	GRANT : GRANT(권한부여) 권한
+
+	INDEX : 인덱싱 권한
+	EXECUTE : 프로시저 실행 권한
+
+
+  - 객체 권한 확인하기
+	SELECT * FROM DBA_TAB_PRIVS; -- DBA의 객체권한
+	SELECT * FROM USER_TAB_PRIVS; -- USER의 객체권한
+
+
+  - 객체 권한 부여 문법
+
+	GRANT 객체권한
+	ON 객체
+	TO 사용자
+
+	ex)
+	  GRANT SELECT
+	  ON scott.emp
+	  TO test
+
+
+  - 객체 권한 회수 문법
+
+	REVOKE 객체권한
+	ON 객체
+	FROM 사용자

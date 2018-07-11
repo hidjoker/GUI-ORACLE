@@ -1,0 +1,11 @@
+
+ + DCL, Data Control Language, 데이터 제어어
+  - 권한 또는 트랜잭션을 관리하는 SQL
+
+  - TCL, Transaction Control Language
+	COMMIT : 트랜잭션 반영
+	ROLLBACK : 트랜잭션 미반영
+
+  - 권한 구문
+	GRANT : 권한 부여
+	REVOKE : 권한 회수

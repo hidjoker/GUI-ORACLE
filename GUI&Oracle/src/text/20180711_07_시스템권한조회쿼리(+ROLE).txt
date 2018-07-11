@@ -1,0 +1,9 @@
+ + 권한 조회하기 (+롤)
+
+SELECT * FROM DBA_SYS_PRIVS
+WHERE grantee IN (
+    SELECT granted_role FROM DBA_ROLE_PRIVS
+    WHERE GRANTEE = 'SCOTT' )
+UNION
+SELECT * FROM DBA_SYS_PRIVS
+WHERE grantee='SCOTT';
