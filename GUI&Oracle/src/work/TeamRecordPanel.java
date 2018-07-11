@@ -126,21 +126,6 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     		tbDefault.addRow(row);
     	}
     	
-    	
-    	
-//    	//팀레코드 판넬 - 컴포넌트
-//    	//		데이터
-//    	Object[][] rowData = {
-//    			{"사장실","사장","홍길동"},
-//    			{"재무경영팀","재무경영 총괄","정지훈"},
-//    			{"인사관리팀","인사관리","권미현"},
-//    			{"개발1팀","프로그램 개발","배창환"},
-//    			{"개발2팀","프로그램 개발","송영준"},
-//    			{"기획팀","프로그램 기획","송주현"},
-//    			{"영업팀","프로그램 마케팅","이현우"}
-//    	};
-    	
-
 
     	// 테이블 렌더
     	DefaultTableCellRenderer render = new DefaultTableCellRenderer();
@@ -234,7 +219,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	String data[] = new String[dtos_Employee.size()];
 
     	for(int i=0 ; i<dtos_Employee.size() ; i++) {
-    		data[i] = dtos_Employee.get(i).getName()+" - 사번 : "+dtos_Employee.get(i).getEmployeeId();
+    		data[i] = dtos_Employee.get(i).getName()+"_사번:"+dtos_Employee.get(i).getEmployeeId();
     	}
     	
     	//콤보박스 설정
@@ -300,7 +285,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 			String arr[] = new String[2];
 			dto_Team.setTeamName(txtTeam.getText());
 			dto_Team.setTeamRole(txtRole.getText());
-			arr = ((String)cbLeader.getSelectedItem()).split(" - 사번 : "); 
+			arr = ((String)cbLeader.getSelectedItem()).split("_사번:"); 
 			dto_Team.setTeamLeaderName(arr[0]);
 			dto_Team.setTeamLeaderId(arr[1]);
 			dao.insertTeam(dto_Team);
@@ -313,10 +298,17 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 		}
 		if(e.getSource()==btnDelete) {
 			
-			
 		}
 		if(e.getSource()==btnEdit) {
-			tbTeamRecord
+			String prevTeam = (String) tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 1);
+			dto_Team = new TeamDto();
+			String arr[] = new String[2];
+			dto_Team.setTeamName(txtTeam.getText());
+			dto_Team.setTeamRole(txtRole.getText());
+			arr = ((String)cbLeader.getSelectedItem()).split("_사번:"); 
+			dto_Team.setTeamLeaderName(arr[0]);
+			dto_Team.setTeamLeaderId(arr[1]);
+			dao.updateTeam(dto_Team, prevTeam);
 		}
 	}
 

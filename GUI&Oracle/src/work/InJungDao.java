@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Data Access Object for InJung a InJung.
@@ -45,7 +46,22 @@ public class InJungDao {
 		
 		Connection connection = null;
 		PreparedStatement pstmt = null;
-		String query = "insert into employee value (EMP_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
+		String query = "insert into employee("
+				+ "employeeId, employeeName, birthDate, team, employLevel, role, mobile, workPhone, email, location, password, photoPath, lostIdQuestion, lostIdAnswer) "
+				+ " value (EMP_SEQ.NEXTVAL,"
+				+ "?," //1. employName
+				+ "?," //2. birthDate
+				+ "?," //3. team
+				+ "?," //4. employLevel
+				+ "?," //5. role
+				+ "?," //6. mobile
+				+ "?," //7. workPhone
+				+ "?," //8. email
+				+ "?," //9. location
+				+ "?," //10. password
+				+ "?," //11. photoPath
+				+ "?," //12. lostIdQuestion
+				+ "?)"; //13. lostIdAnswer
 		
 		try {
 			connection = getConnection();
@@ -60,8 +76,10 @@ public class InJungDao {
 			pstmt.setString(7, dto.getWorkPhone());
 			pstmt.setString(8, dto.geteMail());
 			pstmt.setString(9, dto.getLocation());
-			pstmt.setString(10, dto.getLostIdQuestion());
-			pstmt.setString(11, dto.getLostIdAnswer());
+			pstmt.setString(10, dto.getPassword());
+			pstmt.setString(11, dto.getPhoto());
+			pstmt.setString(12, dto.getLostIdQuestion());
+			pstmt.setString(13, dto.getLostIdAnswer());
 			pstmt.executeUpdate();
 			
 			results = INSERT_DATA_SUCCESS; 
@@ -98,20 +116,20 @@ public class InJungDao {
 			
 			if(set.next()) {
 				dto = new EmployeeDto();
-				dto.setEmployeeId(set.getInt("employeeId"));
-				dto.setName(set.getString("employeeName"));
-				dto.setBirth(set.getString("birthdate"));
-				dto.setTeam(set.getString("team"));
-				dto.setLevel(set.getString("employlevel"));
-				dto.setRole(set.getString("role"));
-				dto.setMobile(set.getString("mobile"));
-				dto.setWorkPhone(set.getString("workphone"));
-				dto.seteMail(set.getString("email"));
-				dto.setLocation(set.getString("location"));
-				dto.setPassword(set.getString("password"));
-				dto.setPhoto(set.getString("photopath"));
-				dto.setLostIdQuestion(set.getString("lostIdQuestion"));
-				dto.setLostIdAnswer(set.getString("lostIdAnswer"));
+				dto.setEmployeeId(set.getInt("employeeId")); 	//1
+				dto.setName(set.getString("employeeName")); 	//2
+				dto.setBirth(set.getString("birthdate"));  		//3
+				dto.setTeam(set.getString("team")); 			//4
+				dto.setLevel(set.getString("employlevel")); 	//5
+				dto.setRole(set.getString("role")); 			//6
+				dto.setMobile(set.getString("mobile")); 		//7
+				dto.setWorkPhone(set.getString("workphone")); 	//8
+				dto.seteMail(set.getString("email"));			//9
+				dto.setLocation(set.getString("location"));		//10
+				dto.setPassword(set.getString("password"));		//11
+				dto.setPhoto(set.getString("photopath"));		//12
+				dto.setLostIdQuestion(set.getString("lostIdQuestion")); //13
+				dto.setLostIdAnswer(set.getString("lostIdAnswer")); 	//14
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -145,7 +163,7 @@ public class InJungDao {
 				+ "WHERE employeeId > ? )"
 				+ "where rownum <= ?"; // Sub Query
 		ArrayList<EmployeeDto> dtos = new ArrayList<>();
-		EmployeeDto dto = new EmployeeDto();
+		EmployeeDto dto = null;
 		
 		try {
 			connection = getConnection();
@@ -155,20 +173,21 @@ public class InJungDao {
 			set = pstmt.executeQuery();
 			
 			while(set.next()) {
-				dto.setEmployeeId(set.getInt("employeeId"));
-				dto.setName(set.getString("employeeName"));
-				dto.setBirth(set.getString("birthdate"));
-				dto.setTeam(set.getString("team"));
-				dto.setLevel(set.getString("employlevel"));
-				dto.setRole(set.getString("role"));
-				dto.setMobile(set.getString("mobile"));
-				dto.setWorkPhone(set.getString("workphone"));
-				dto.seteMail(set.getString("email"));
-				dto.setLocation(set.getString("location"));
-				dto.setPassword(set.getString("password"));
-				dto.setPhoto(set.getString("photopath"));
-				dto.setLostIdQuestion(set.getString("lostIdQuestion"));
-				dto.setLostIdAnswer(set.getString("lostIdAnswer"));
+				dto = new EmployeeDto();
+				dto.setEmployeeId(set.getInt("employeeId")); 	//1
+				dto.setName(set.getString("employeeName")); 	//2
+				dto.setBirth(set.getString("birthdate"));  		//3
+				dto.setTeam(set.getString("team")); 			//4
+				dto.setLevel(set.getString("employlevel")); 	//5
+				dto.setRole(set.getString("role")); 			//6
+				dto.setMobile(set.getString("mobile")); 		//7
+				dto.setWorkPhone(set.getString("workphone")); 	//8
+				dto.seteMail(set.getString("email"));			//9
+				dto.setLocation(set.getString("location"));		//10
+				dto.setPassword(set.getString("password"));		//11
+				dto.setPhoto(set.getString("photopath"));		//12
+				dto.setLostIdQuestion(set.getString("lostIdQuestion")); //13
+				dto.setLostIdAnswer(set.getString("lostIdAnswer")); 	//14
 				dtos.add(dto);
 			}
 			
@@ -204,7 +223,7 @@ public class InJungDao {
 		ResultSet set = null;
 		String query = "select * from employee";
 		ArrayList<EmployeeDto> dtos = new ArrayList<>();
-		EmployeeDto dto = new EmployeeDto();
+		EmployeeDto dto = null;
 		
 		try {
 			connection = getConnection();
@@ -212,20 +231,22 @@ public class InJungDao {
 			set = pstmt.executeQuery();
 			
 			while(set.next()) {
-				dto.setEmployeeId(set.getInt("employeeId"));
-				dto.setName(set.getString("employeeName"));
-				dto.setBirth(set.getString("birthdate"));
-				dto.setTeam(set.getString("team"));
-				dto.setLevel(set.getString("employlevel"));
-				dto.setRole(set.getString("role"));
-				dto.setMobile(set.getString("mobile"));
-				dto.setWorkPhone(set.getString("workphone"));
-				dto.seteMail(set.getString("email"));
-				dto.setLocation(set.getString("location"));
-				dto.setPassword(set.getString("password"));
-				dto.setPhoto(set.getString("photopath"));
-				dto.setLostIdQuestion(set.getString("lostIdQuestion"));
-				dto.setLostIdAnswer(set.getString("lostIdAnswer"));
+				dto = new EmployeeDto();
+				
+				dto.setEmployeeId(set.getInt("employeeId")); 	//1
+				dto.setName(set.getString("employeeName")); 	//2
+				dto.setBirth(set.getString("birthdate"));  		//3
+				dto.setTeam(set.getString("team")); 			//4
+				dto.setLevel(set.getString("employlevel")); 	//5
+				dto.setRole(set.getString("role")); 			//6
+				dto.setMobile(set.getString("mobile")); 		//7
+				dto.setWorkPhone(set.getString("workphone")); 	//8
+				dto.seteMail(set.getString("email"));			//9
+				dto.setLocation(set.getString("location"));		//10
+				dto.setPassword(set.getString("password"));		//11
+				dto.setPhoto(set.getString("photopath"));		//12
+				dto.setLostIdQuestion(set.getString("lostIdQuestion")); //13
+				dto.setLostIdAnswer(set.getString("lostIdAnswer")); 	//14
 				dtos.add(dto);
 			}			
 		} catch (Exception e) {
@@ -243,6 +264,77 @@ public class InJungDao {
 		return dtos;
 	}
 	
+	/**
+	 * Get team employees data
+	 * @param teamName
+	 * @param lastEmpId - previous last employeeNum 
+	 * @param idx - the number of employee get from database  
+	 * @return
+	 */
+	public ArrayList<EmployeeDto> getTeamEmployee(String teamName, int lastEmpId, int idx) {
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet set = null;
+		String query = "select * from "
+				+ "(SELECT * FROM employee "
+				+ "WHERE teamName = ? AND employeeId > ? )"
+				+ "where rownum <= ?"; 
+		ArrayList<EmployeeDto> dtos = new ArrayList<>();
+		EmployeeDto dto = null;
+		
+		try {
+			connection = getConnection();
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, teamName);
+			pstmt.setInt(2, lastEmpId);
+			pstmt.setInt(3, idx);
+			set = pstmt.executeQuery();
+			
+			while(set.next()) {
+				dto = new EmployeeDto();
+				
+				dto.setEmployeeId(set.getInt("employeeId")); 	//1
+				dto.setName(set.getString("employeeName")); 	//2
+				dto.setBirth(set.getString("birthdate"));  		//3
+				dto.setTeam(set.getString("team")); 			//4
+				dto.setLevel(set.getString("employlevel")); 	//5
+				dto.setRole(set.getString("role")); 			//6
+				dto.setMobile(set.getString("mobile")); 		//7
+				dto.setWorkPhone(set.getString("workphone")); 	//8
+				dto.seteMail(set.getString("email"));			//9
+				dto.setLocation(set.getString("location"));		//10
+				dto.setPassword(set.getString("password"));		//11
+				dto.setPhoto(set.getString("photopath"));		//12
+				dto.setLostIdQuestion(set.getString("lostIdQuestion")); //13
+				dto.setLostIdAnswer(set.getString("lostIdAnswer")); 	//14
+				dtos.add(dto);
+			}
+			
+			// if data is not exist, add dump employee data. 
+			for(int i=0;i<idx;i++) {
+				if(dtos.size()<i) {
+					dtos.add(new EmployeeDto());
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(set!=null) set.close();
+				if(pstmt!=null) pstmt.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return dtos;
+	}
+	
+	/**
+	 * get Employee Count
+	 * @return total employee count, -1 means error.
+	 */
 	public int countEmployee() {
 		int cnt = -1;
 		Connection connection = null;
@@ -307,6 +399,42 @@ public class InJungDao {
 	}
 	
 	/**
+	 * Update Team
+	 * @param dto - TeamDto, want to be changed. 
+	 * @param privTeamName - previous teamName
+	 * @return result code 1: success, 0: failed
+	 */
+	public int updateTeam(TeamDto dto, String prevTeamName) {
+		int results = INSERT_DATA_FAILED;
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		String query = "update team set teamname=?, teamrole=?, teamleaderId=? where teamname=?";
+		
+		try {
+			connection = getConnection();
+			pstmt = connection.prepareStatement(query); 
+			pstmt.setString(1, dto.getTeamName());
+			pstmt.setString(2, dto.getTeamRole());
+			pstmt.setString(3, dto.getTeamLeaderId());
+			pstmt.setString(4, prevTeamName);
+			pstmt.executeUpdate();
+			
+			results = INSERT_DATA_SUCCESS; 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null)		 pstmt.close();
+				if(connection!=null) connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return results;
+	}
+	
+	/**
 	 * Get all team list with team leader name.
 	 * @return ArrayList
 	 */
@@ -317,7 +445,7 @@ public class InJungDao {
 		String query = "select teamname, teamrole, teamleaderId, employeeName from team T, employee E "
 				+ "where T.teamleaderId = E.employeeId"; // EQUI JOIN 
 		ArrayList<TeamDto> dtos = new ArrayList<>();		
-		TeamDto dto = new TeamDto();
+		TeamDto dto = null;
 		
 		try {
 			connection = getConnection();
@@ -325,11 +453,12 @@ public class InJungDao {
 			set = pstmt.executeQuery();
 			
 			while(set.next()) {
+				dto = new TeamDto();
+				
 				dto.setTeamName(set.getString("teamName"));
 				dto.setTeamRole(set.getString("teamRole"));
 				dto.setTeamLeaderId(set.getString("teamLeaderId"));
 				dto.setTeamLeaderName(set.getString("employeeName"));
-
 				dtos.add(dto);
 			}			
 		} catch (Exception e) {
@@ -346,7 +475,176 @@ public class InJungDao {
 		return dtos;
 	}
 	
+	/**
+	 * get employee password
+	 * @param empId - employeeId
+	 * @return employee id
+	 */
+	public String getPassword(int empId) {
+		String password = null; 
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet set = null;
+		String query = "select password from employee where employeeId=?";
+		
+		try {
+			connection = getConnection();
+			pstmt = connection.prepareStatement(query);
+			pstmt.setInt(1, empId);
+			set = pstmt.executeQuery();
+		
+			if(set.next()) {
+				password = set.getString("password");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(set!=null) set.close();
+				if(pstmt!=null) pstmt.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return password;
+	}
 	
+	/**
+	 * Set New password 
+	 * @param empId - employee ID 
+	 * @param newPw - new Password
+	 * @return results code -1: failed, 1: success 
+	 */
+	public int setNewPassword (int empId, String newPw) {
+		int results = -1 ; 
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		String query = "update employee set password = ? where employeeID=?";
+		
+		try {
+			connection = getConnection();
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, newPw);
+			pstmt.setInt(2, empId);
+			pstmt.executeUpdate();
+		
+			results = 1;	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return results;
+	}
+	
+	public ArrayList<EmployeeDto> getQuizData() {
+		int tot = countEmployee();
+		int[] selectedIndex = new int[3]; 
+		Random rand = new Random();
+		for(int i=0;i<3;i++) {
+			selectedIndex[i]=rand.nextInt(tot+1);
+		}
+		
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet set = null;
+		String query = "SELECT * FROM(" + 
+				"Select employeename, photopath, rownum r FROM employee)" + 
+				"WHERE r IN (?, ?, ?);"; 
+		ArrayList<EmployeeDto> dtos = new ArrayList<>();
+		EmployeeDto dto = null;
+		
+		try {
+			connection = getConnection();
+			pstmt = connection.prepareStatement(query);
+			for(int i=1;i<selectedIndex.length+1;i++) {
+				pstmt.setInt(i, selectedIndex[i]);
+			}
+			set = pstmt.executeQuery();
+			
+			while(set.next()) {
+				dto = new EmployeeDto();
+				
+				dto.setName(set.getString("employeeName"));
+				dto.setPhoto(set.getString("photopath"));
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(set!=null) set.close();
+				if(pstmt!=null) pstmt.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return dtos;
+	}
+	
+	/**
+	 * Get Employee who are on birthday at selected month
+	 * @param month 
+	 * @return - Employ ArrayList
+	 */
+	public ArrayList<EmployeeDto> getEmpBirth(int month) {
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet set = null;
+		String query = "SELECT * FROM employee" + 
+				"WHERE TO_CHAR(TO_DATE(birthdate), 'mm') = ?"; 
+		ArrayList<EmployeeDto> dtos = new ArrayList<>();
+		EmployeeDto dto = null;
+		
+		try {
+			connection = getConnection();
+			pstmt = connection.prepareStatement(query);
+			pstmt.setInt(1, month);
+			set = pstmt.executeQuery();
+			
+			while(set.next()) {
+				dto = new EmployeeDto();
+				
+				dto.setEmployeeId(set.getInt("employeeId")); 	//1
+				dto.setName(set.getString("employeeName")); 	//2
+				dto.setBirth(set.getString("birthdate"));  		//3
+				dto.setTeam(set.getString("team")); 			//4
+				dto.setLevel(set.getString("employlevel")); 	//5
+				dto.setRole(set.getString("role")); 			//6
+				dto.setMobile(set.getString("mobile")); 		//7
+				dto.setWorkPhone(set.getString("workphone")); 	//8
+				dto.seteMail(set.getString("email"));			//9
+				dto.setLocation(set.getString("location"));		//10
+				dto.setPassword(set.getString("password"));		//11
+				dto.setPhoto(set.getString("photopath"));		//12
+				dto.setLostIdQuestion(set.getString("lostIdQuestion")); //13
+				dto.setLostIdAnswer(set.getString("lostIdAnswer")); 	//14
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(set!=null) set.close();
+				if(pstmt!=null) pstmt.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return dtos;
+	}
+	
+
 	private Connection getConnection() {
 		Connection connection = null;
 		
