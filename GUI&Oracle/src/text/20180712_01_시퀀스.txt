@@ -1,0 +1,56 @@
+
+ + 시퀀스
+  - 연속된 숫자를 생성해주는 객체
+
+  - 테이블 내의 유일한 숫자를 자동으로 생성할 때 사용
+
+  - 행을 구분하는 유일키 값으로 사용함
+   (PRIMARY KEY)
+
+
+
+ + 시퀀스 생성 구문
+  - CREATE SEQUENCE 시퀀스명;
+
+  - CREATE SEQUENCE 시퀀스명
+    [ START WITH n ]	--시작값
+    [ INCREMENT BY n ]	--증가값
+    [ MAXVALUE n | NOMAXVALUE ] --최대값
+    [ MINVALUE n | NOMINVALUE ] --최소값
+    [ CYCLE | NOCYCLE ]	--순환구조 여부
+    [ CACHE n | NOCACHE ]	--미리 생성할 숫자 개수
+
+
+
+ + 시퀀스 변경 구문
+  - ALTER SEQUENCE 시퀀스명
+    [ INCREMENT BY n ]	--증가값
+    [ MAXVALUE n | NOMAXVALUE ] --최대값
+    [ MINVALUE n | NOMINVALUE ] --최소값
+    [ CYCLE | NOCYCLE ]	--순환구조 여부
+    [ CACHE n | NOCACHE ]	--미리 생성할 숫자 개수
+   
+	** START WITH 를 변경할 수 없음
+
+
+
+ + 시퀀스 사용 구문
+
+  - 시퀀스명.currval	-- 현재 시퀀스값
+  - 시퀀스명.nextval	-- 다음 시퀀스값
+
+  ex)
+	CREATE SEQUENCE seq_emp;
+
+	INSERT INTO emp (empno, ename)
+	VALUES ( seq_emp.nextval, #{ename } );
+
+
+
+ + 시퀀스 삭제
+  - DROP SEQUENCE 시퀀스명;
+
+
+
+ + 시퀀스 확인 자료사전
+  - SELECT * FROM USER_SEQUENCES;

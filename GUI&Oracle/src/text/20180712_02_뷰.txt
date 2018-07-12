@@ -1,0 +1,34 @@
+
+ + 뷰, View
+  - 복잡한 쿼리를 간단하게 사용하려는 목적의 객체
+
+  - 접근할 수 있는 데이터의 범위를 축소하기 위해 사용하기도 한다
+   ( 조회되는 컬럼을 제한할 수 있음 )
+
+  - SELECT 쿼리만 VIEW로 저장하고 있음
+  - VIEW를 테이블 처럼 조회하면
+  - VIEW에 저장되어있는 SELECT 쿼리를 수행하고 결과를 넘겨줌
+
+  - 이름만 봐서는 TABLE인지 VIEW인지 구분 할 수 없음
+
+  - 가상테이블을 생성하는 객체이다
+
+  - 뷰를 통해서 테이블 조회, 삽입, 수정, 삭제 가능
+
+
+
+ + 뷰 생성 문법
+
+	CREATE [OR REPLACE] VIEW 뷰이름
+	AS 서브쿼리
+	[ WITH CHECK OPTION [CONTRAINT 제약조건] ]
+	[ WITH READ ONLY ]
+
+	CREATE : 뷰 생성
+
+	CREATE OR REPLACE : 뷰 생성
+		중복된 뷰이름이 있으면 쿼리를 수정하여 반영
+
+	WITH CHECK OPTION : 제약조건에 맞는 데이터만 삽입,수정가능
+
+	WITH READ ONLY : SELECT만 가능

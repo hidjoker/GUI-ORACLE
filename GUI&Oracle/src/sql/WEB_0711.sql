@@ -306,10 +306,10 @@ WHERE GRANTEE IN('RESOURCE','CONNECT');
 SELECT * FROM DBA_SYS_PRIVS
 WHERE grantee IN(
     SELECT granted_role FROM DBA_ROLE_PRIVS
-    WHERE GRANTEE = 'TEST')
+    WHERE GRANTEE = 'scott')
 UNION
 SELECT * FROM DBA_SYS_PRIVS
-WHERE grantee='TEST';
+WHERE grantee='scott';
 
 -- + 롤, Role
 --	- 권한 집합
