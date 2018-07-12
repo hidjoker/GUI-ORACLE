@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -32,7 +34,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 
-public class TeamRecordPanel extends JPanel implements ActionListener, ListSelectionListener{
+public class TeamRecordPanel extends JPanel implements ActionListener, MouseListener{
 
 	//상수
 	private static final int tablePane_Y=0;
@@ -107,6 +109,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	column.addElement("부 서");
     	column.addElement("Role");
     	column.addElement("Leader");
+    	column.addElement("Leader_id");
     	
     	
     	//테이블 설정
@@ -116,13 +119,15 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	tbTeamRecord.setRowHeight(40);
     	tbTeamRecord.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     	
+    	//
     	
     	//행 Vector에 TeamDto들 담기  	
     	for(int i=0;i< dtos_Team.size();i++) {
         	Vector<String> row = new Vector<>();
     		row.addElement(dtos_Team.get(i).getTeamName());
     		row.addElement(dtos_Team.get(i).getTeamRole());
-    		row.addElement(dtos_Team.get(i).getTeamLeaderName());  		
+    		row.addElement(dtos_Team.get(i).getTeamLeaderName()); 
+    		row.addElement(dtos_Team.get(i).getTeamLeaderId());
     		tbDefault.addRow(row);
     	}
     	
@@ -132,7 +137,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	render.setHorizontalAlignment(SwingConstants.CENTER);
     	
     	// 테이블 셀렉션 모델
-    	tbTeamRecord.getSelectionModel().addListSelectionListener(this);
+    	tbTeamRecord.addMouseListener(this);
     	
     	// 테이블 헤더 설정
     	JTableHeader header = tbTeamRecord.getTableHeader();
@@ -155,6 +160,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
     	thirdColoumn.setMinWidth(170);
     	thirdColoumn.setMaxWidth(170);
     	thirdColoumn.setCellRenderer(render);
+    	TableColumn FourthColoumn = tbTeamRecord.getColumnModel().getColumn(3);
     	 
  	
     	
@@ -308,15 +314,26 @@ public class TeamRecordPanel extends JPanel implements ActionListener, ListSelec
 			arr = ((String)cbLeader.getSelectedItem()).split("_사번:"); 
 			dto_Team.setTeamLeaderName(arr[0]);
 			dto_Team.setTeamLeaderId(arr[1]);
-			dao.updateTeam(dto_Team, prevTeam);
+			dao.updateTeam(dto_Team, prevTeam);	
 		}
 	}
 
+
 	@Override
-	public void valueChanged(ListSelectionEvent e) {
-		
-		
+	public void mouseClicked(MouseEvent e) {
+		txtTeam.setText((String) tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 1));
+		txtRole.setText((String) tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 2));
+		String cb = (String) tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 3);
+		cb = "_사번:"+tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 4) ;       
+		cbLeader.setSelectedItem((Object)cb);
 	}
-	
-	
+	@Override
+	public void mousePressed(MouseEvent e) {}
+	@Override
+	public void mouseReleased(MouseEvent e) {}
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+	@Override
+	public void mouseExited(MouseEvent e) {}
+
 }
