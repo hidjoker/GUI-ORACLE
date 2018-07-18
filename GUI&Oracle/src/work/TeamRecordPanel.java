@@ -36,7 +36,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 	 * 	 <팀 레코드 판넬>
 	 * 최근 업데이트 : 7.16
 	 * 작성자 : 이현우
-	 * 진행 작업 : 다이얼로그 이벤트 + 예외처리
+	 * 진행 작업 : 코딩 정리
 	 *
 	 */
 	
@@ -69,9 +69,9 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     private JTable tbTeamRecord;
     //테이블 판넬 - 스크롤 판넬
     private JScrollPane scrollPane;
-    //J테이블 디폴트 모델
-    DefaultTableModel tbDefault = null; 
-    
+    //J테이블 디폴트 모델, 셀렉션 모델
+    DefaultTableModel tbDefault = null;
+
     //입력 판넬
     private JPanel inputPane;
     private JLabel lblTeam;
@@ -91,6 +91,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
        
     public TeamRecordPanel(){	
     	
+    	//설정
     	setLayout(null);   	
     		
     	//테이블판넬 
@@ -157,6 +158,7 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     	header.setBackground(new Color(200, 200, 200));
 
     	// 테이블 컬럼 설정
+    	tbTeamRecord.setRowSelectionInterval(1, 0);
     	TableColumn firstColoumn = tbTeamRecord.getColumnModel().getColumn(0);
     	firstColoumn.setPreferredWidth(200);
     	firstColoumn.setMinWidth(200);
@@ -298,70 +300,148 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     
     //팀 생성
     private void insertTeam(int select) {
+
+    	if(select==0) {  	
+    		//예외처리
+    		if(txtTeam.getText().trim().equals("")
+					||txtRole.getText().trim().equals("")
+					||cbLeader.getSelectedIndex()==0) {
+				JOptionPane.showMessageDialog(
+						this,
+						"내용을 빠짐없이 입력하세요",
+						"입력 오류",
+						JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+    			
+    		for(int i=0 ; i<tbTeamRecord.getRowCount() ; i++) {
+    			boolean b = txtTeam.getText().trim().equals(
+    					tbTeamRecord.getValueAt(i, 0));
+    			if(b) {
+    				JOptionPane.showMessageDialog(
+    						this, 
+    						"같은 팀명이 이미 존재합니다", 
+    						"수정 실패", 
+    						JOptionPane.ERROR_MESSAGE);
+    				return;
+    			}
+    		}
+    		
+    		//DTO
+    		dto_Team = new TeamDto();
+    		String arr[] = new String[2];
+    		dto_Team.setTeamName(txtTeam.getText());
+    		dto_Team.setTeamRole(txtRole.getText());
 		
-    	if(select==1)
-    	System.out.println(select);
-		//DTO
-		dto_Team = new TeamDto();
-		String arr[] = new String[2];
-		dto_Team.setTeamName(txtTeam.getText());
-		dto_Team.setTeamRole(txtRole.getText());
+    		arr = ((String)cbLeader.getSelectedItem()).split("_사번:"); 
+    		dto_Team.setTeamLeaderName(arr[0]);
+    		dto_Team.setTeamLeaderId(arr[1]);
 		
-		arr = ((String)cbLeader.getSelectedItem()).split("_사번:"); 
-		dto_Team.setTeamLeaderName(arr[0]);
-		dto_Team.setTeamLeaderId(arr[1]);
+    		dao.insertTeam(dto_Team);
 		
-		dao.insertTeam(dto_Team);
-		
-		//JTABLE
-		Vector<String> v = new Vector<>();
-		v.addElement(txtTeam.getText());
-		v.addElement(txtRole.getText());
-		v.addElement(arr[0]);
-		v.addElement(arr[1]);
-		tbDefault.addRow(v);
-		
+    		//JTABLE
+    		Vector<String> v = new Vector<>();
+    		v.addElement(txtTeam.getText());
+    		v.addElement(txtRole.getText());
+    		v.addElement(arr[0]);
+    		v.addElement(arr[1]);
+    		tbDefault.addRow(v);
+    	
+    	}
+    	
 	}
     
     //팀 삭제
     private void deleteTeam(int select) {
     	
-    	//DTO
-		String teamName;
-		teamName = (String)tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 0);
-		
-		dao.deleteTeam(teamName);
-		
-		txtTeam.setText("");
-		txtRole.setText("");
-		cbLeader.setSelectedIndex(0);
-		
-		//JTABLE
-		tbDefault.removeRow(tbTeamRecord.getSelectedRow());	
-   
+    	if(select == 0) {
+    		
+	    	//DTO
+			String teamName;
+			teamName = (String)tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 0);
+			
+			dao.deleteTeam(teamName);
+			
+			txtTeam.setText("");
+			txtRole.setText("");
+			cbLeader.setSelectedIndex(0);
+			
+			//JTABLE
+			tbDefault.removeRow(tbTeamRecord.getSelectedRow());
+	    	tbTeamRecord.setRowSelectionInterval(1, 0);
+	    	
+    	}
+  
     }
     
     //팀 수정
     private void editTeam(int select) {
-    	
-    	//DTO
-		String prevTeam = (String) tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 0);
-		System.out.println(prevTeam);
-		dto_Team = new TeamDto();
-		dto_Team.setTeamName(txtTeam.getText());
-		dto_Team.setTeamRole(txtRole.getText());
+    	    	
+    	if(select==0) {
+   		 
+    		String arr[] = new String[2];
+			arr = ((String)cbLeader.getSelectedItem()).split("_사번:"); 
+			
+    		//예외처리
+			if(txtTeam.getText().trim().equals("")
+					||txtRole.getText().trim().equals("")
+					||cbLeader.getSelectedIndex()==0) {
+				JOptionPane.showMessageDialog(
+						this,
+						"내용을 빠짐없이 입력하세요",
+						"입력 오류",
+						JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+    		if(txtTeam.getText().trim().equals(
+    				tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 0))
+    			&& txtRole.getText().trim().equals(
+    				tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 1))
+    			&& arr[0].equals(
+    				tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 2))
+    			&& arr[1].equals(
+    				tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 3))
+    		){
+    			JOptionPane.showMessageDialog(
+    					this,
+    					"동일한 내용으로 수정할 수 없습니다", 
+    					"수정 실패", 
+    					JOptionPane.ERROR_MESSAGE);
+    			return;	
+    		}
+    		
+    		for(int i=0 ; i<tbTeamRecord.getRowCount() ; i++) {
+    			if(i==tbTeamRecord.getSelectedRow()) continue;
+    			boolean b = txtTeam.getText().trim().equals(
+    					tbTeamRecord.getValueAt(i, 0));
+    			if(b) {
+    				JOptionPane.showMessageDialog(
+    						this, 
+    						"같은 팀명이 이미 존재합니다", 
+    						"수정 실패", 
+    						JOptionPane.ERROR_MESSAGE);
+    				return;
+    			}
+    		}
+    		
+  		   		
+    		//DTO
+    		String prevTeam = (String) tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 0);
+			dto_Team = new TeamDto();
+			dto_Team.setTeamName(txtTeam.getText());
+			dto_Team.setTeamRole(txtRole.getText());
 		
-		String arr[] = new String[2];
-		arr = ((String)cbLeader.getSelectedItem()).split("_사번:"); 
-		dto_Team.setTeamLeaderName(arr[0]);
-		dto_Team.setTeamLeaderId(arr[1]);
-		
-		dao.updateTeam(dto_Team, prevTeam);
-		
-		//JTABLE
-		tbTeamRecord.setValueAt(txtTeam.getText(), tbTeamRecord.getSelectedRow(), 0);
-		tbTeamRecord.setValueAt(txtRole.getText(), tbTeamRecord.getSelectedRow(), 1);
-		tbTeamRecord.setValueAt(arr[0], tbTeamRecord.getSelectedRow(), 2);	
+			dto_Team.setTeamLeaderName(arr[0]);
+			dto_Team.setTeamLeaderId(arr[1]);
+			
+			dao.updateTeam(dto_Team, prevTeam);
+			
+			//JTABLE
+			tbTeamRecord.setValueAt(txtTeam.getText(), tbTeamRecord.getSelectedRow(), 0);
+			tbTeamRecord.setValueAt(txtRole.getText(), tbTeamRecord.getSelectedRow(), 1);
+			tbTeamRecord.setValueAt(arr[0], tbTeamRecord.getSelectedRow(), 2);
+    	}
     
     }
         
