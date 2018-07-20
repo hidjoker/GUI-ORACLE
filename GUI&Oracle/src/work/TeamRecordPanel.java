@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ import injung.model.EmployeeDto;
 import injung.model.InJungDao;
 import injung.model.TeamDto;
 
-public class TeamRecordPanel extends JPanel implements ActionListener, MouseListener{
+public class TeamRecordPanel extends JPanel implements ActionListener, MouseListener, FocusListener{
 
 	/**
 	 * 	 <팀 레코드 판넬>
@@ -127,11 +129,17 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     	column.addElement("Leader_id");
     	    	
     	//테이블 설정
-    	tbDefault = new DefaultTableModel(column, 0); 
+    	tbDefault = new DefaultTableModel(column, 0) {  		
+			private static final long serialVersionUID = 1L;
+			@Override
+    		public boolean isCellEditable(int row, int column) {
+    			return false; //테이블 수정 불가
+    		}
+    	};    	
     	tbTeamRecord = new JTable(tbDefault);
-    	tbTeamRecord.setFont(new Font("고딕",Font.BOLD,16));
+    	tbTeamRecord.setFont(new Font("고딕",Font.BOLD,14));
     	tbTeamRecord.setRowHeight(40);
-    	tbTeamRecord.setBackground(new Color(235,235,235));
+    	tbTeamRecord.setBackground(new Color(238,238,238));
     	tbTeamRecord.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     	
     	//행 Vector에 TeamDto 데이터 넣기  	
@@ -154,8 +162,10 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     	// 테이블 헤더 설정
     	JTableHeader header = tbTeamRecord.getTableHeader();
     	header.setPreferredSize(new Dimension(970, 40));
-    	header.setFont(new Font("고딕",Font.BOLD,16));
+    	header.setFont(new Font("고딕",Font.BOLD,14));
     	header.setBackground(new Color(200, 200, 200));
+    	header.setResizingAllowed(false);
+    	header.setReorderingAllowed(false);
 
     	// 테이블 컬럼 설정
     	tbTeamRecord.setRowSelectionInterval(1, 0);
@@ -201,19 +211,19 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     	
     	//컴포넌트
     	lblTeam = new JLabel("부 서");
-    	lblTeam.setFont(lblTeam.getFont().deriveFont(16.0f));
+    	lblTeam.setFont(lblTeam.getFont().deriveFont(14.0f));
     	lblTeam.setBounds(new Rectangle(5, 5, 140, 45));
     	lblTeam.setHorizontalAlignment(JLabel.CENTER);
     	lblTeam.setBorder(BorderFactory.createLineBorder(Color.BLACK));   	
     	
     	lblRole = new JLabel("Role");
-    	lblRole.setFont(lblRole.getFont().deriveFont(16.0f));
+    	lblRole.setFont(lblRole.getFont().deriveFont(14.0f));
     	lblRole.setBounds(new Rectangle(5, 55, 140, 45));
     	lblRole.setHorizontalAlignment(JLabel.CENTER);
     	lblRole.setBorder(BorderFactory.createLineBorder(Color.BLACK));   	
     	
     	lblLeader = new JLabel("Leader");
-    	lblLeader.setFont(lblLeader.getFont().deriveFont(16.0f));
+    	lblLeader.setFont(lblLeader.getFont().deriveFont(14.0f));
     	lblLeader.setBounds(new Rectangle(5, 105, 140, 45));
     	lblLeader.setHorizontalAlignment(JLabel.CENTER);
     	lblLeader.setBorder(BorderFactory.createLineBorder(Color.BLACK));   	
@@ -222,21 +232,24 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     	txtTeam.setBounds(150, 5, 500, 45);
     	txtTeam.setFont(lblTeam.getFont());
     	txtTeam.setEditable(true);
+       	txtTeam.setText("6자 이내로 입력하세요:)");
+    	txtTeam.setForeground(Color.GRAY);
     	txtTeam.setBackground(Color.white);
-    	txtTeam.setForeground(Color.BLACK);
     	
     	txtRole = new JTextField();
     	txtRole.setBounds(150, 55, 500, 45);
     	txtRole.setFont(lblRole.getFont());
     	txtRole.setEditable(true);
+    	txtRole.setText("33자 이내로 입력하세요:)");
+    	txtRole.setForeground(Color.GRAY);
     	txtRole.setBackground(Color.white);
-    	txtRole.setForeground(Color.BLACK);
     	
-
+ 
+    	
       	//콤보박스에 employee DTO집어넣기
     	dtos_Employee=dao.getAllEmployee();
     	String data[] = new String[dtos_Employee.size()+1];
-    	data[0] = "";
+    	data[0] = "사원을 선택하세요:)";
 
     	for(int i=0 ; i<dtos_Employee.size() ; i++) {
     		data[i+1] = dtos_Employee.get(i).getName()+"_사번:"+dtos_Employee.get(i).getEmployeeId();
@@ -247,8 +260,8 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     	cbLeader.setBounds(150, 105, 500, 45);
     	cbLeader.setFont(lblLeader.getFont());
     	cbLeader.setEditable(false);
+    	cbLeader.setForeground(Color.GRAY);
     	cbLeader.setBackground(Color.WHITE);
-    	cbLeader.setForeground(Color.BLACK);
     	
     	inputPane.add(lblTeam);
     	inputPane.add(lblRole);
@@ -258,6 +271,12 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     	inputPane.add(cbLeader);
     	
     	add(inputPane);
+    	
+    	//Place Holder용 포커스 이벤트
+    	
+    	txtTeam.addFocusListener(this);
+    	txtRole.addFocusListener(this);
+    	cbLeader.addFocusListener(this);
     }
     
     //버튼판넬
@@ -272,16 +291,12 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     	
     	//컴포넌트
     	btnInsert = new JButton("생성");
-    	btnInsert.setFont(new Font("고딕",Font.BOLD,14));
     	btnInsert.setBounds(5, 80, 130, 30);
     	btnCancel = new JButton("취소");
-    	btnCancel.setFont(new Font("고딕",Font.BOLD,14));
     	btnCancel.setBounds(5, 120, 130, 30);
     	btnEdit = new JButton("수정");
-    	btnEdit.setFont(new Font("고딕",Font.BOLD,14));
     	btnEdit.setBounds(158, 80, 130, 30);
     	btnDelete = new JButton("삭제");
-    	btnDelete.setFont(new Font("고딕",Font.BOLD,14));
     	btnDelete.setBounds(158, 120, 130, 30);		
 
     	btnPane.add(btnInsert);
@@ -313,7 +328,25 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-    			
+    		
+    		if(txtTeam.getText().trim().length()>6) {
+    			JOptionPane.showMessageDialog(
+						this,
+						"팀명이 너무 깁니다(6자 이내)",
+						"입력 오류",
+						JOptionPane.ERROR_MESSAGE);
+				return;
+    		}
+    		
+    		if(txtRole.getText().trim().length()>33) {
+    			JOptionPane.showMessageDialog(
+						this,
+						"Role 내용이 너무 깁니다(33자 이내)",
+						"입력 오류",
+						JOptionPane.ERROR_MESSAGE);
+				return;
+    		}
+    		
     		for(int i=0 ; i<tbTeamRecord.getRowCount() ; i++) {
     			boolean b = txtTeam.getText().trim().equals(
     					tbTeamRecord.getValueAt(i, 0));
@@ -330,8 +363,8 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     		//DTO
     		dto_Team = new TeamDto();
     		String arr[] = new String[2];
-    		dto_Team.setTeamName(txtTeam.getText());
-    		dto_Team.setTeamRole(txtRole.getText());
+    		dto_Team.setTeamName(txtTeam.getText().trim());
+    		dto_Team.setTeamRole(txtRole.getText().trim());
 		
     		arr = ((String)cbLeader.getSelectedItem()).split("_사번:"); 
     		dto_Team.setTeamLeaderName(arr[0]);
@@ -341,8 +374,8 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 		
     		//JTABLE
     		Vector<String> v = new Vector<>();
-    		v.addElement(txtTeam.getText());
-    		v.addElement(txtRole.getText());
+    		v.addElement(txtTeam.getText().trim());
+    		v.addElement(txtRole.getText().trim());
     		v.addElement(arr[0]);
     		v.addElement(arr[1]);
     		tbDefault.addRow(v);
@@ -393,7 +426,23 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			
+    		if(txtTeam.getText().trim().length()>6) {
+    			JOptionPane.showMessageDialog(
+						this,
+						"팀명이 너무 깁니다",
+						"입력 오류",
+						JOptionPane.ERROR_MESSAGE);
+				return;
+    		}
+    		if(txtRole.getText().trim().length()>33) {
+    			JOptionPane.showMessageDialog(
+						this,
+						"Role 내용이 너무 깁니다(33자 이내)",
+						"입력 오류",
+						JOptionPane.ERROR_MESSAGE);
+				return;
+    		}
+    		
     		if(txtTeam.getText().trim().equals(
     				tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 0))
     			&& txtRole.getText().trim().equals(
@@ -423,14 +472,12 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     						JOptionPane.ERROR_MESSAGE);
     				return;
     			}
-    		}
-    		
-  		   		
+    		}		   		
     		//DTO
     		String prevTeam = (String) tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 0);
 			dto_Team = new TeamDto();
-			dto_Team.setTeamName(txtTeam.getText());
-			dto_Team.setTeamRole(txtRole.getText());
+			dto_Team.setTeamName(txtTeam.getText().trim());
+			dto_Team.setTeamRole(txtRole.getText().trim());
 		
 			dto_Team.setTeamLeaderName(arr[0]);
 			dto_Team.setTeamLeaderId(arr[1]);
@@ -438,8 +485,8 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 			dao.updateTeam(dto_Team, prevTeam);
 			
 			//JTABLE
-			tbTeamRecord.setValueAt(txtTeam.getText(), tbTeamRecord.getSelectedRow(), 0);
-			tbTeamRecord.setValueAt(txtRole.getText(), tbTeamRecord.getSelectedRow(), 1);
+			tbTeamRecord.setValueAt(txtTeam.getText().trim(), tbTeamRecord.getSelectedRow(), 0);
+			tbTeamRecord.setValueAt(txtRole.getText().trim(), tbTeamRecord.getSelectedRow(), 1);
 			tbTeamRecord.setValueAt(arr[0], tbTeamRecord.getSelectedRow(), 2);
     	}
     
@@ -471,8 +518,11 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 		
 		if(e.getSource()==btnCancel) {
 			//비우기
-			txtTeam.setText("");
-			txtRole.setText("");
+	    	txtTeam.setForeground(Color.GRAY);
+			txtTeam.setText("6자 이내로 입력하세요:)");
+	    	txtRole.setForeground(Color.GRAY);
+			txtRole.setText("33자 이내로 입력하세요:)");
+	    	cbLeader.setForeground(Color.GRAY);
 			cbLeader.setSelectedIndex(0);
 		}
 		
@@ -514,6 +564,9 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 	//마우스 클릭 이벤트 - 테이블 값 띄우기
 	@Override
 	public void mouseClicked(MouseEvent e) {
+    	txtTeam.setForeground(Color.BLACK);
+    	txtRole.setForeground(Color.BLACK);
+    	cbLeader.setForeground(Color.BLACK);
 		txtTeam.setText((String) tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 0));
 		txtRole.setText((String) tbTeamRecord.getValueAt(tbTeamRecord.getSelectedRow(), 1));
 		
@@ -529,6 +582,44 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 	public void mouseEntered(MouseEvent e) {}
 	@Override
 	public void mouseExited(MouseEvent e) {}
+
+	@Override
+	public void focusGained(FocusEvent e) {
+		if(e.getSource()==txtTeam) {
+			if(txtTeam.getText().equals("6자 이내로 입력하세요:)")){
+				txtTeam.setText("");
+				txtTeam.setForeground(Color.BLACK);
+			}
+		}
+		if(e.getSource()==txtRole) {
+			if(txtRole.getText().equals("33자 이내로 입력하세요:)")){
+				txtRole.setText("");
+				txtRole.setForeground(Color.BLACK);
+			}
+		}
+		if(e.getSource()==cbLeader) {
+	    	cbLeader.setForeground(Color.BLACK);
+		}
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		if(e.getSource()==txtTeam) {
+			if(txtTeam.getText().trim().equals("")){
+				txtTeam.setText("6자 이내로 입력하세요:)");
+				txtTeam.setForeground(Color.GRAY);
+			}
+		}
+		if(e.getSource()==txtRole) {
+			if(txtRole.getText().trim().equals("")){
+				txtRole.setText("33자 이내로 입력하세요:)");
+				txtRole.setForeground(Color.GRAY);
+			}
+		}
+		if(e.getSource()==cbLeader) {
+	    	cbLeader.setForeground(Color.GRAY);
+		}
+	}
 }
 
 
