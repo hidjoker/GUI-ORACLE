@@ -23,9 +23,9 @@ public class SwingEtc_01_JFormattedTextField extends JFrame {
 		try {
 //			format = new MaskFormatter("###.###.###.###");
 //			format = new MaskFormatter("192.168.20.###");
-//			format = new MaskFormatter("AAAAAAAA");
+			format = new MaskFormatter("AAAAAAAA");
 //			format = new MaskFormatter("UUUUU");
-			format = new MaskFormatter("01#-####-####");
+//			format = new MaskFormatter("01#-####-####");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

@@ -1,0 +1,14 @@
+ + Windows - Preferences에서 작업
+
+  - General - Workspace
+	Text file encoding
+	Other: UTF-8
+
+  - Web - CSS Files
+  - Web - HTML Files
+  - Web - JSP Files
+	Encoding 바꾸기
+	항목중 가장 위에 ISO 10646/Unicode(UTF-8)
+
+
+  - Apply And Close

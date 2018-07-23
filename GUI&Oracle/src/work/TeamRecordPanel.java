@@ -320,7 +320,9 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     		//예외처리
     		if(txtTeam.getText().trim().equals("")
 					||txtRole.getText().trim().equals("")
-					||cbLeader.getSelectedIndex()==0) {
+					||cbLeader.getSelectedIndex()==0
+					||txtTeam.getText().trim().equals("6자 이내로 입력하세요:)")
+					||txtRole.getText().trim().equals("33자 이내로 입력하세요:)")){
 				JOptionPane.showMessageDialog(
 						this,
 						"내용을 빠짐없이 입력하세요",
@@ -395,9 +397,13 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 			
 			dao.deleteTeam(teamName);
 			
-			txtTeam.setText("");
-			txtRole.setText("");
+			txtTeam.setText("6자 이내로 입력하세요:)");
+			txtRole.setText("33자 이내로 입력하세요:)");
 			cbLeader.setSelectedIndex(0);
+			
+			txtTeam.setForeground(Color.GRAY);
+			txtRole.setForeground(Color.GRAY);
+			cbLeader.setForeground(Color.GRAY);
 			
 			//JTABLE
 			tbDefault.removeRow(tbTeamRecord.getSelectedRow());
@@ -418,7 +424,9 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
     		//예외처리
 			if(txtTeam.getText().trim().equals("")
 					||txtRole.getText().trim().equals("")
-					||cbLeader.getSelectedIndex()==0) {
+					||cbLeader.getSelectedIndex()==0
+					||txtTeam.getText().trim().equals("6자 이내로 입력하세요:)")
+					||txtRole.getText().trim().equals("33자 이내로 입력하세요:)")){
 				JOptionPane.showMessageDialog(
 						this,
 						"내용을 빠짐없이 입력하세요",
@@ -617,7 +625,8 @@ public class TeamRecordPanel extends JPanel implements ActionListener, MouseList
 			}
 		}
 		if(e.getSource()==cbLeader) {
-	    	cbLeader.setForeground(Color.GRAY);
+	    	if(cbLeader.getSelectedIndex()==0)
+	    		cbLeader.setForeground(Color.GRAY);
 		}
 	}
 }

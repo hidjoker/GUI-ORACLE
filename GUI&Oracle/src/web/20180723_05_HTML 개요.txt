@@ -1,0 +1,32 @@
+
+ + HTML, HyperText Markup Language
+
+  - 웹페이지의 구조를 표현
+  - (웹 화면의) 골격을 구현함 (레이아웃)
+
+  - 태그로 이루어져 있음
+
+
+ + HTML 태그, tag
+  - HTML 문서의 내부 모양을 나타내는 요소
+
+  - 여는태그 <html>, 닫는태그 </html> 이 쌍으로 이루어져있다
+
+
+
+ + HTML 기본 구조
+  - <html>, <head>, <body> 를 기본 구성요소로 가짐
+
+	<html>
+	  <head>
+	  </head>
+
+	  <body>
+	  </body>
+	</html>
+
+  - <html> : 이 문서가 HTML문서임을 나타내는 태그
+
+  - <head> : 문서에 대한 정보, 설정들을 입력하는 태그
+
+  - <body> : 화면에 출력되는 내용들을 입력하는 태그

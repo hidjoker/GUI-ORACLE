@@ -1,0 +1,16 @@
+ + 아파치 톰캣 서버 (Apache Tomcat)
+
+  - http://tomcat.apache.org/ 접속
+
+  - 왼쪽 메뉴
+  - Download
+
+  - Tomcat9 클릭
+
+  - Core 항목의
+	zip 다운로드
+
+  ** 32-bit Windows 아님
+  ** 64-bit Windows도 아님
+  ** 32-bit/64-bit Windows Service Installer도 아님
+  ** 그냥 zip이라고만 써있는 거 다운 받으면 됨

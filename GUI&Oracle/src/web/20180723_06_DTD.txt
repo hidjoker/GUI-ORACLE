@@ -1,0 +1,19 @@
+
+ + DTD, Document Type Definition, DOCTYPE
+  - 문서 유형 정의
+
+  - 브라우저에게 해당 문서가 작성된 유형을 알리는 문장
+  - 버전정보도 포함한다
+
+
+
+ + 대표적인 DTD
+  - HTML 4.01
+	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+  - HTML 5
+	<!DOCTYPE html>
+
+
+  - XHTML1.0

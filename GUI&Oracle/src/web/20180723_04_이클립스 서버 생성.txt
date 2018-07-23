@@ -1,0 +1,5 @@
+ - Servers 탭에서 수행
+
+	'No servers are ....'로 시작하는 링크 클릭
+
+	바로 Finish 클릭

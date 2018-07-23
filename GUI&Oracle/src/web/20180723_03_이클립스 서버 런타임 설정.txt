@@ -1,0 +1,13 @@
+ + Windows - Preferences에서 작업
+
+  - Server - Runtime Environment
+
+	Add 버튼 클릭
+
+	Apache Tomcat v9.0 선택
+
+	Browse... 클릭
+
+	아파치 톰캣 설치 폴더 선택
+
+	Apply And Close
