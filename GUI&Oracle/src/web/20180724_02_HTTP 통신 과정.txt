@@ -1,0 +1,29 @@
+ + HTTP 통신 과정
+
+	클라이언트			서버
+
+	URL 요청 ------ REQUEST ------->
+					요청 처리
+					요청에 해당하는 작업수행
+
+					응답 생성
+	응답받기<------ RESPONSE ------ 요청에 대한 응답
+	응답데이터 처리
+
+
+  - REQUEST, RESPONSE 메시지는 HEADER와 BODY로 구성되어있다
+
+
+  - REQUEST 메시지 HEADER(헤더)
+	메시지 속성
+	요청클라이언트 정보
+
+  - REQUEST 메시지 BODY(본문)
+	데이터(없을 수도 있음)
+
+
+  - RESPONSE 메시지 HEADER(헤더)
+	메시지 정보
+
+  - RESPONSE 메시지 BODY(본문)
+	응답 데이터(주로 HTML)
