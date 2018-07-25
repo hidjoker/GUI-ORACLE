@@ -1,0 +1,97 @@
+<!--
+ + 웹 안전 색상, Web Safe Color
+	- rgb 기준으로 표현 가능 색상은 256*256*256(16,777,216)가지
+	- 모든 색상을 표현하기엔 현실적인 어려움이 있어 표준을 정한 것
+	- RGB 각 요소를 6단계로 나눠서 표현
+	- 6 * 6 * 6 = 216 가지
+	- 0~255를 00, 33, 66, 99, CC, FF만 표현
+		(0, 3, 6, 9, C, F)
+ + 웹 컬러 색상표
+ + 단위
+		색상
+		크기
+ + 크기 단위
+	- 고정 크기 단위
+		주변요소(부모요소)의 크기에 영향을 받지않고
+		일정한 크기를 유지하는 단위
+
+		px : 픽셀, 화소 단위, 정확한 위치나 크기를 설정할 때 사용
+
+		in : 인치, 설정이 되어있는 수치를 따른다(현실세계랑 다름)
+		pc : 파이카, 1/6in
+		pt : 포인트, 1/12pc, 1/72in
+
+		cm : 센티미터, 1in = 2.54cm
+		mm : 밀리미터, 1cm = 10mm
+
+	- 가변 크기 단위
+		상대적인 크기를 지정하는 단위
+		em : 부모요소에서 지정한 크기만큼( 1em = 부모요소의 크기)
+		(주로 부모요소의 line-heigth 값을 지칭함 )
+		ex : 지정된 폰트에서 'x'의 높이 크기만큼 
+		% : 요소가 들어갈 수 있는 공간에서의 비율
+		rem : 최상위(root) 부모요소(<html>)의 크기만큼
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- style type="text/css" -->
+
+<style type="text/css">
+body { font-size : 30px;}
+
+div{
+/*  font-size : 2em; */
+/*  font-size : 1ex;  */
+/*  font-size : 50%; */
+ 	font-size : 1rem;
+}
+
+ /*
+ + id, class 속성
+- id( id="idName", #idName )
+HTML 문서에서 각 요소들을 구분하기 위한 목적으로
+사용되는 속성값
+- class(class="className", .className)
+HTML 문서에서 공통적인 기능을 수행해야하는 요소들을 그룹화하여 관리할 때 사용하는 속성
+-> 같은 스타일을 적용하고자 할 때
+-> 같은 이벤트를 적용하고자 할 때
+
+ + CSS 여백
+- 컨텐츠(내용물)을 감싸고 있는 투명한 공간
+- top right bottom left의 영역으로 구성되어있음
+- 여백 공간의 크기는 주로 auto 또는 %단위 또는 길이단위로 설정
+- margin, 외부여백
+- padding, 내부여백
+*/
+
+</style>
+
+</head>
+<body>
+<p>안녕!</p>
+<div id="hello" class="blue">안녕하세요</div>
+<div class="red">안녕하세요</div>
+<div class="blue">안녕하세요</div>
+<div class="red">안녕하세요</div>
+</body>
+</html>
+
+<!--
+ - margin, 외부여백
+	테두리(border)의 바깥쪽 영역
+	margin : all;
+	margin : top&bottom left&right;
+	margin : top left&right bottom;
+	margin : top right bottom left;	
+ - padding, 내부여백
+	테두리(border)와 컨텐츠(element)사이의 공간
+	padding : all;
+	padding : top&bottom left&right;
+	padding : top left&right bottom;
+	padding : top right bottom left; 
+-->	
+
