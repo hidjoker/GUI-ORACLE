@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+/* 최상위 태그, html */
+:root { color : #666; }
+
+li:nth-child(2) {color : red;}
+li:nth-last-child(2){color : blue;}
+
+/* 형제들 중에 첫번째, 마지막인 요소 */
+/* html, head, body 같은 모든 요소에 */
+/* 해당하므로 단독으로 쓰이는 건 좋지 않다 */
+:first-child { border : 1px solid red;}
+:last-child {border : 1px dotted blue;}
+
+li:only-child { background : tomato; }
+ul:only-of-type { background: yellow; }
+
+/* .title { font-style : italic; } */
+li:not(.title){ font-style : italic;}
+li:not(.only){font-size: 30px;}
+
+</style>
+
+</head>
+<body>
+<div>
+<h1 class="title">가상클래스 선택자</h1>
+<hr>
+<h2>요소 순서 선택자</h2>
+<ul>
+	<li>HTML5</li>
+	<li>CSS3</li>
+	<li>Javascript</li>
+	<li>jQuery</li>
+	<li>JSP</li>
+</ul>
+<ul>
+	<li class="only">HTML5</li>
+</ul>
+<ul>
+	<li>CSS3</li>
+	<li>선택자</li>
+	<ul>
+		<li>ID 선택자</li>
+		<li>CLASS 선택자</li>
+	</ul>
+</ul>
+
+</div>
+
+
+</body>
+</html>

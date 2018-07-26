@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+/* title 속성을 가지는 h1태그 */
+h1[title] { color: red; }
+
+/* title이 greeting인 h1태그 */
+h1[title~="greeting"] {
+	border: 1px solid blue;
+}
+
+/* class의 값이 "abc"로 완전 같은 h1태그 */
+h1[class="abc"] { background: yellow; } 
+
+/* class의 값이 "abc"를 온전히 포함하는 h1태그 */
+h1[class~="abc"] { font-style: italic;}
+
+/* class의 값이 "te"로 시작하는 h1태그 */
+h1[class^="te"] { font-size: 20px; }
+
+/* class의 값이 "st"로 끝나는 h1태그 */
+h1[class$="st"] {
+	border: 1px dotted orange;
+}
+
+/* class의 값으로 "c"를 포함하는 모든 h1태그 */
+/* 일부라도 포함하면 선택됨 */
+h1[class*="c"] { background: tomato; }
+
+/* "abc"와 같거나 */
+/* "abc-" 로 시작하는 h1태그 */
+h1[class|="abc"] { font-size: 50px; }
+
+</style></head><body>
+<div>
+
+<h1 class="abc test dd" title="hi">
+Hello
+</h1>
+
+<h1 class="abc st">안녕하세요</h1>
+
+<h1 class="abc-css" title="greeting">
+반가워요
+</h1>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+/* div에 마우스 올리면 선택되면서 반응함! */
+div:hover { color: red; }
+
+/* span클릭하면 적용됨 */
+/* 눌릴 때 반응(mouse press) */
+span:active {
+	color: orange;
+	font-size: 40px;
+}
+span:hover { background-color: green; }
+
+input[type="button"]:active {
+	color: blue;
+}
+
+a:visited { color: gray; }
+a:link { color: red; }
+/* 인터넷 사용 기록 단축키 : ctrl+shift+del */
+
+:checked {
+	width: 50px;
+	height: 50px;
+}
+
+</style></head><body>
+<div>
+
+<span>span태그 안쪽</span>span태그 바깥쪽<br>
+<input type="button" value="확인" /><br>
+
+
+<a href="http://www.naver.com">링크</a>
+<a href="http://www.daum.net">링크 2</a>
+<a href="http://www.daum.net">링크 3</a>
+
+<label>
+	<input type="checkbox" />확인
+</label>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

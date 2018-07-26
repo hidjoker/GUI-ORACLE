@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- 
+	- 클래스 선택자
+		.className{  } 
+-->
+
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+.blue{ color : blue ;}
+.size3{font-size : 3em;}
+
+/* p#three (p태그#아이디) */
+p.size3 { 
+	font-size : 1em; 
+	color: gray 
+}	
+
+</style>
+
+
+</head>
+<body>
+
+<p class="blue">p태그</p>
+<span class="size3">span태그</span>
+<div class="blue">
+	div태그
+	<p class="size3">div태그 내부 p태그</p>	
+</div>
+
+
+</body>
+</html>

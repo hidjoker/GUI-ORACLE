@@ -1,0 +1,112 @@
+ + 선택자, Selector
+  - HTML 문서에서 특정 요소를 선택하는 방법
+
+  - 선택된 요소에 스타일을 적용할 수 있다
+
+
+
+ + 선택자 종류
+  - 전체 선택자 : 모든 요소
+	* { }
+
+
+  - 태그 선택자
+	tagName { }
+
+
+  - 아이디 선택자
+	#idName { }
+
+
+  - 클래스 선택자
+	.className { }
+
+
+  - 복합 선택자
+	두개 이상의 요소가 모인 선택자
+
+	요소들의 관계를 따져 선택한다
+
+	1. 하위 선택자(descendant)
+	  E F : E의 하위 요소인 F
+
+	2. 자식 선택자(child)
+	  E > F : E의 자식 요소인 F
+
+	3. 형제 선택자(sibling)
+	  E + F : E의 인접형제 F (바로 뒤에오는 형제요소)
+
+	  E ~ F : E의 일반형제 F (뒤따르는 모든 형제요소)
+
+
+  - 속성 선택자
+	요소의 속성(attribute)을 이용하여 선택
+
+	E[attr] : attr속성을 가지고 있는 E 태그
+
+	E[attr="val"] : attr속성의 값이 val과 같은 E 태그
+
+	E[attr~="val"] : val을 완전포함하는 E 태그
+
+	E[attr^="val"] : val로 시작하는 E 태그
+
+	E[attr$="val"] : val로 끝나는 E 태그
+
+	E[attr*="val"] : val을 부분포함하는 E 태그
+
+	E[attr|="val"] : "val"과 같거나 "val-" 로 시작하는 E 태그
+
+
+
+  - 가상(pseudo) 선택자, 의사 선택자
+	HTML 문서에는 실제로 존재하지 않는 요소를 선택
+
+	이벤트 기반으로 선택하거나
+	특정 순서에 의해서 선택한다
+
+
+	1. 가상 클래스 선택자
+	  이벤트 기반의 선택자
+
+		E:hover - 마우스의 onenter,onleave 이벤트에 반응하여 선택
+		E:active - 마우스 클릭에 반응
+
+		E:link - 방문 전 링크를 선택
+		E:visited - 방문 후 링크 선택
+
+		E:checked - 체크 상태인 태그
+
+		E:enabled - enabled 상태인 태그
+		E:disabled - disabled 상태인 태그
+
+		E:empty - 비어있는 태그
+
+		E:focus - 포커스받고 있는 태그
+
+
+	2. 가상 요소(엘리먼트) 선택자
+		::before - 대상요소의 앞
+		::after - 대상요소의 뒤
+
+		::first-line - 요소의 첫 줄
+		::first-letter - 요소의 첫 글자
+
+
+	3. 요소 순서 선택자 (가상 클래스에 포함됨)
+		:root - 문서의 최상위 요소 (html)
+
+		:nth-child(n) - 앞에서 n번째 요소
+		:nth-last-child(n) - 뒤에서 n번째 요소
+
+		:first-child - 첫 요소
+		:last-child - 마지막 요소
+
+		:only-child - 유일한 자식(형제요소가 없을 때)
+
+		:only-of-type - 유일한 타입(형제가 있더라도)
+
+
+
+  - 부정 선택자
+
+	E:not(S) - S조건을 만족하지 않는 E 요소

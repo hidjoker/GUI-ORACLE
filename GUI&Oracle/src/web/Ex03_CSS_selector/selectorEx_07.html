@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<!--
+ 	- 가상(pseudo) 선택자, 의사 선택자
+			HTML 문서에는 실제로 존재하지 않는 요소를 선택
+			이벤트 기반으로 선택하거나
+			특정 순서에 의해서 선택한다
+			1. 가상 클래스 선택자
+				이벤트 기반의 선택자
+					E:hover - 마우스의 onenter, onleave 이벤트에 반응하여 선택
+					E:active - 마우스 클릭에 반응
+					E:link - 방문 전 링크를 선택
+					E:visited - 방문 후 링크 선택
+					E:checked - 체크 상태인 태그
+					E:enabled - enabled 상태인 태그
+					E:disabled - disabled 상태인 태그
+					E:empty - 비어있는 태그
+					E:focus - 포커스받고 있는 태그
+			2. 가상 요소(엘리먼트) 선택자
+				::before - 대상요소의 앞
+				::after - 대상요소의 뒤
+				::first - line - 요소의 첫 줄
+				::first - letter - 요소의 첫 글자
+			3. 요소 순서 선택자(가상 클래스에 포함됨)
+				:root - 문서의 최상위 요소(html)
+				:nth-child(n) - 앞에서 n번째 요소
+				:nth-last-child(n) - 뒤에서 n번째 요소
+				:first-child - 첫 요소
+				:last-child - 마지막 요소
+				:only-child -  유일한 자식(형제요소가 없을 때)
+				:only-of-type - 유일한 타입(형제가 있더라도)
+	- 부정 선택자
+		E:not(S) - S조건을 만족하는 않는 E요소
+ -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+div:hover {color :red;}
+/* span클릭하면 적용됨 */
+/* 눌릴 때 반응(mouse press)  */
+span:active{
+	color : orange;
+	font-size : 40px;
+}
+span:hover{
+	background-color : green;
+}
+input[type="button"]:active{
+	color : blue;
+}
+
+a:visited { color : gray; }
+a:link { color : red; }
+/* 인터넷 사용 기록 단축키 : ctrl + shift + del */
+:checked{
+	width : 50px;
+	height : 50px;
+}
+
+</style>
+
+</head>
+<body>
+<div>
+
+<span>
+span태그의 안쪽
+</span>
+span태그의 바깥쪽
+<br>
+
+<input type="button" value="확인" /><br>
+<a href="http://www.naver.com">링크</a>
+<a href="http://www.daum.net">링크2</a>
+<a href="http://www.daum.net">링크3</a>
+
+<label>
+	<input type="checkbox" />확인
+</label>
+
+</div>
+</body>
+</html>

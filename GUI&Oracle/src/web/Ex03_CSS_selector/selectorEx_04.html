@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<!--
+ 	- 복합 선택자
+		두개 이상의 요소가 모인 선택자
+		요소들의 관계를 따져 선택한다
+		1. 하위 선택자(descendant)
+			E F : E의 하위 요소인 F
+		2. 자식 선택자(child)
+			E > F : E의 자식 요소인 F
+		3. 형제 선택자(sibling)
+			E + F : E의 인접형제 F (바로 뒤에오는 형제요소)
+			E ~ F : E의 일반형제 F (뒤따르는 모든 형제요소)
+ -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+
+/* div의 하위(자손)들 중에서 ul */
+div ul { border : 1px solid #808080;}
+
+/* div의 자식 중에서 ul */
+div > ul { border : 1px dotted tomato; }
+
+/* 같은 우선순위인 선택자는 나중에 작성한*/
+/* CSS 코드가 적용된다 */
+
+/* 자손선택자와 자식선택자는 같은 우선순위 */
+
+</style>
+</head>
+<body>
+<div>
+<ul>
+	<li>1</li>
+	<ul>
+		<li>2</li>
+		<ul>
+			<li>2-1</li>
+			<li>2-2</li>
+		</ul>
+	</ul>
+</ul>
+</div>
+
+</body>
+</html>

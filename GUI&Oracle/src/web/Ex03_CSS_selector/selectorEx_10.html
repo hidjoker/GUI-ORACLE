@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<!--
+ + 선택자의 우선순위
+	1. 아이디 선택자
+	2. 클래스 / 속성 / 가상 선택자
+	3. 태그 선택자
+	4. 전체 선택자
+	(낮은 번호가 우선순위가 높음)
+
+ + 스타일 적용방법(위치)에 따른 우선순위
+	1. !important
+	2. 인라인
+	3. 인베디드
+	4. @import
+	5. <link>
+	6. <link> 안에 적용된 @import
+	7. 브라우저 기본 스타일
+ -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+/* 아이디 선택자 > 클래스 선택자 */
+/* !important로 설정한 스타일이 깡패 */
+.pClass { color : blue !important;}
+#pId {color : red;}
+
+</style>
+
+</head>
+<body>
+<div>
+
+<!-- 인라인방식 > 인베디드 방식 -->
+<p id="pId" class="pClass" style="color : orange;">
+!important 테스트
+</p>
+
+
+
+</div>
+
+
+</body>
+</html>

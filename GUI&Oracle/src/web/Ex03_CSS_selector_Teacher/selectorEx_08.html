@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+p::first-line { color: blue; }
+p::first-letter {
+	color: red;
+	font-size: 20px;
+}
+
+span::before {
+	/* before에 쓰여질 내용 */
+	content: "span\A   before\A";
+
+	/* content에 적용될 CSS */
+	color: red;
+	background-color: gray;
+	
+	/* 공백문자 처리 방식 */
+	white-space: pre-wrap;
+	/* nowrap - 공백을 하나의 스페이스로 병합*/
+	
+	/* pre - 공백문자 구분해서 적용 */
+	/* pre-line - 개행만 구분 */
+	/* pre-wrap - 전부 구분 */
+}
+
+div > div::after {
+/* 	content: url(mi.jpg); */
+	content: "";
+	
+	width: 200px;
+	height: 100px;
+	
+	display: inline-block;
+	
+	background-image: url(mi.jpg);
+	background-size: 200px 100px;
+}
+
+
+</style></head><body>
+<div>
+
+<p>첫 번째(p)</p>
+<span>두 번째(span)</span>
+<div>세 번째(div)</div>
+<p>네 번째 (p) This is p tag.<br>
+하하하하하하<br>
+아아아아</p>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
