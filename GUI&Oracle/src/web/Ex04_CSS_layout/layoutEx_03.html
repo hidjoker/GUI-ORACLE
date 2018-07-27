@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- 
+ + 레이아웃 흐름(배치)
+	- float
+		요소를 배치하는 방향을 지정하는 속성
+		floating의 약자
+		left - 왼쪽기준 배치
+		right - 오른쪽기준 배치
+		none - float하지 않음
+	- clear
+		float 속성을 부여받은 요소는 다음에 오는 요소에게도
+		float의 영향을 끼치게된다
+		clear 속성은 float 속성을 제거해준다
+		clear : left -> float : left; 속성 제거
+		clear : right -> float : right; 속성 제거
+		clear : both -> left, right 전부 제거
+		clear : none -> 양쪽 흐름 속성 전부 허용 
+-->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+div {
+	border : 1px solid black;
+	float : left; /* float에 의해 margin이 사라짐  */
+}
+
+div:first-child {
+	/* float 속성을 부여받아도 */
+	/* display 속성이 없어지진 않는다 */
+	height : 200px;
+	width : 300px
+}
+
+</style>
+
+</head>
+<body>
+
+<div>DIV1 안녕하세요</div>
+<div>DIV2 안녕하세요DIV2 안녕하세요DIV2 안녕하세요</div>
+<div>DIV3 안녕하세요DIV3 안녕하세요DIV3 안녕하세요DIV3 안녕하세요</div>
+
+</body>
+</html>
