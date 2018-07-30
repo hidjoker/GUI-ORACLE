@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<!--
+  + 텍스트 스타일
+	- font-size : 글자 크기
+		px, em 주로 사용
+		(em을 사용하면 line-height의 영향을 받는다)
+	- color : 글자 색상
+	- font-style : 글씨체
+		normal(기본), italic(이탤릭, 흘림체), oblique(기울임체)
+		대부분의 폰트가 italic, oblique가 같은 글씨체로 표현됨
+	- font-weight : 굴기
+		normal, bold, bolder, lighter
+		100(얇음) ~ 900(굵음)
+		200 ~ 300 : lighter
+		400 : normal
+		600 ~ 700 : bold
+		900 : bolder
+	- font-variant : 대소문자 스타일
+		small-caps : 소문자를 작은 대문자로 표현
+	- font-family : 서체
+		serif : 글자에 돌출부분(돌출선)이 있는 서체
+				바탕체, 궁서체, Times New Roman
+		sans-serif : sans(없다), 돌출선이 없는 서체
+				돋움체, 굴림체, Arial
+		cursive : 곡선 강조 서체
+		fantasy : 신기한 모양의 서체들
+		monospace : 글자의 크기가 일정한 서체
+					 consolas, 나눔고딕코딩, 맑은고딕코딩
+		설정 예시)
+	    font-family : "돋움", dotum, "굴림", gulim, arial, helvetica, sans-serif; 
+		(순서대로 사용가능한 서체 우선 적용)
+	- text-align : 텍스트 정렬방향
+			블록요소 내부를 정렬할 때 사용 ( 텍스트 또는 인라인 요소)
+			left, right, center, justify
+	- text-indent : 들여쓰기
+	- text-decoration : 글자 꾸미기
+		none : 없음
+		line-through : 취소선
+		underline : 밑줄
+		overline : 윗줄
+	- line-height : 줄 간격
+		인라인 요소의 높이
+		% 단위로 주로 지정한다
+		정수로 배수로 표현하기도 한다
+		ex) line-height : 140%
+			line-height : 1.4
+ -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+/* 폰트 크기 지정 : 기본값 16px */
+#p1 {
+	/* font-size : 16px; */
+	font-size: 1em; 
+}
+
+/* 폰트 색상 지정 */
+#p2{
+	color : red;
+}
+
+/* 글씨체 */
+#p1,#p3{
+	font-style : italic; /* 기울임 글꼴 */
+}
+
+/* 굵기 */
+#p2, #p4{
+	font-weight: bold; /* 굵게 */
+}
+
+/* 대소문자 스타일 */
+#p4{
+	font-variant : small-caps;
+}
+
+</style>
+</head>
+<body>
+<p id="p1">피가 못할 끓는 같이, 온갖 것은 피는 황금시대의 않는 것이다. 그들을 가치를 이것은 사랑의 역사를 싸인 사라지지 구하지 피고 듣는다. 이 내려온 무엇을 노년에게서 봄바람이다. 할지니, 인생에 있음으로써 그들은 새 생명을 위하여 것은 것이다. 주며, 수 찾아다녀도, 못하다 크고 인생의 길을 유소년에게서 불어 위하여서. 풀밭에 위하여, 살았으며, 위하여 반짝이는 것은 것이다. 청춘 별과 미묘한 가치를 보내는 듣는다. 인생에 불러 위하여 아니다. 청춘의 않는 청춘을 얼음 노년에게서 뿐이다. 생생하며, 인간의 때에, 보는 열매를 보배를 작고 길지 위하여서. 두기 때에, 찬미를 밝은 고행을 인도하겠다는 구하지 운다.</p>
+
+<p id="p2">청춘의 작고 위하여, 뜨거운지라, 산야에 힘차게 가치를 약동하다. 원질이 그들의 든 인도하겠다는 자신과 힘있다. 인간이 갑 밝은 길지 전인 희망의 우는 들어 보라. 더운지라 위하여, 싹이 청춘의 같이, 뜨고, 피고 시들어 있다. 동력은 우리의 인류의 꾸며 그들은 있음으로써 보라. 못하다 우리 미묘한 이상 사는가 그들의 청춘 대고, 약동하다. 않는 청춘의 고동을 그들의 뿐이다. 이상은 주며, 이상은 풀이 맺어, 피고 때문이다. 심장은 열매를 위하여, 그들을 쓸쓸한 대중을 황금시대다.</p>
+
+<p id="p3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut faucibus diam et nibh feugiat fermentum. Fusce egestas faucibus nisl, in bibendum lectus gravida id. Curabitur sit amet tellus vitae odio ullamcorper ultrices non sit amet tortor. Nullam id sodales ipsum, ac pretium dui. Praesent congue eu mauris ut dignissim. Maecenas hendrerit vehicula lectus. Etiam laoreet tincidunt arcu. Nulla rhoncus, tellus ac vulputate tincidunt, enim eros sollicitudin ipsum, sed placerat urna lorem non leo. Nam mattis lectus quam, a volutpat justo posuere vel. Phasellus facilisis ultricies euismod. Quisque a varius neque. Proin non risus tristique, varius tellus quis, consectetur ipsum.</p>
+
+<p id="p4">Aenean ultrices dictum nisl, bibendum laoreet erat bibendum at. Quisque vel purus non enim semper sagittis quis ut ipsum. Aenean luctus nulla et volutpat imperdiet. Donec id mattis felis. Nam in elementum dui. Fusce nec risus in neque ornare rhoncus quis at erat. Phasellus erat tortor, lacinia a leo eget, dignissim blandit ipsum. Fusce aliquam efficitur lobortis. Donec luctus pulvinar justo vitae commodo. Vivamus vel orci felis. Pellentesque scelerisque commodo turpis et imperdiet. Donec commodo scelerisque efficitur. Maecenas fringilla, ante id dictum egestas, mauris felis dictum arcu, vitae mattis arcu purus et ipsum. Donec quis tellus ac enim ornare molestie eu ut nunc.</p>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+ + 레이아웃 흐름 (배치)
+
+  - float
+	요소를 배치하는 방향을 지정하는 속성
+
+	floating의 약자임
+
+
+	left - 왼쪽기준 배치
+	right - 오른쪽기준 배치
+	none - float하지 않음
+
+
+  - clear
+	 float속성을 부여받은 요소는 다음에 오는 요소에게도
+	float의 영향을 끼치게된다
+
+	clear 속성은 float 속성을 제거해준다
+
+	clear: left -> float: 오후 5:15 2018-07-27left; 속성 제거
+	clear: right -> float: right; 속성 제거
+	clear: both -> left, right 전부 제거
+
+	clear: none -> 양쪽 흐름 속성 전부 허용

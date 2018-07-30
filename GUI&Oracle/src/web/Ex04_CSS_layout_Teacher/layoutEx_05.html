@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+body {
+	/* 내부 div가 정렬되지 않음 */
+	/* block 요소는 text-align 속성이 안 먹힘 */
+	text-align: center;
+}
+
+div {
+	/* block요소의 가운데 정렬 */
+	/* block요소가 가지는 margin의 좌우를 똑같이 분할하여 할당한다 */
+	margin: 0 auto;
+	
+	width: 800px;
+	border: 1px solid black;
+	
+	/* inline요소는 text-align 속성이 적용됨 */
+	text-align: center;/* 내부요소 정렬 */
+}
+
+span { font-size: 30px; }
+
+#span1 {
+	background: red;
+	float: left;
+}
+#span2 {
+	background: blue;
+	float: right;
+}
+
+</style></head><body>
+
+<div>
+<span id="span1">SPAN1 요소</span>
+<span id="span2">SPAN2 요소</span>
+<span>안녕!</span>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
