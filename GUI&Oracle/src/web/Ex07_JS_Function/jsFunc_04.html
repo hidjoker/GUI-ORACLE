@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+// 콜백 함수
+// callback function
+// 직접 호출해서 동작하는 함수가 아닌
+// 외부의 동작에 의해서 실행되는 함수
+
+// 옵저버패턴(Observer Pattern) - Event Driven
+
+// 연산 로직
+function add(n1, n2, callback) {
+	var res = n1 + n2; // 연산
+	callback(res); // 연산 결과 처리
+}
+
+// 결과 처리 로직 1번
+function print( result ){
+	console.log("결과값 : "+result);
+}
+// 결과 처리 로직 2번
+function alertRes( result ) {
+	alert("결과값 : "+result);
+}
+
+add(10, 20, print);
+add(20, 30, alertRes);
+add(40, 50, function(res) {
+	document.write( res );
+});
+
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

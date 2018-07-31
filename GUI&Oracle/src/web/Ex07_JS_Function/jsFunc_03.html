@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+// 중첩 함수
+var num = 111; //전역변수
+function hello() { //외부함수
+	var num = 222; //지역변수
+	console.log("안녕! "+num); //누가 출력되나? -> 222
+	
+	function inner() { //내부함수
+		var num = 333; //지역변수
+		console.log("반가워요 " + num); //누가 출력될까? -> 333
+	}
+	
+	inner();
+}
+
+hello();
+inner(); //정의되지 않음
+
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

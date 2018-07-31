@@ -1,0 +1,71 @@
+ + 텍스트 스타일
+  - font-size : 글자 크기
+	px, em 주로 사용
+	(em을 사용하면 line-height의 영향을 받는다)
+
+  - color : 글자 색상
+
+  - font-style : 글씨체
+	normal(기본), italic(이탤릭, 흘림체), oblique(기울임체)
+
+	대부분의 폰트가 italic, oblique가 같은 글씨체로 표현됨
+
+  - font-weight : 굵기
+	normal, bold, bolder, lighter
+	100(얇음) ~ 900(굵음)
+
+	200~300 : lighter
+	400 : normal
+	600~700 : bold
+	900 : bolder
+
+  - font-variant : 대소문자 스타일
+	small-caps : 소문자를 작은 대문자로 표현
+
+  - font-family : 서체
+	serif : 글자에 돌출부분(돌출선)이 있는 서체
+		바탕체, 궁서체, Times New Roman
+
+	sans-serif : sans(없다), 돌출선이 없는 서체
+		돋움체, 굴림체, Arial
+
+	cursive : 곡선 강조 서체
+	fantasy : 신기한 모양의 서체
+
+	monospace : 글자의 크기가 일정한 서체
+		consolas
+		나눔고딕코딩
+		맑은고딩코딩
+
+
+  설정 예시)
+
+ font-family:"돋움",dotum,"굴림",gulim,arial,helvetica,sans-serif;
+
+
+
+ - text-align : 텍스트 정렬방향
+	블록요소 내부를 정렬할 때 사용( 텍스트 또는 인라인 요소 )
+
+	left, right, center, justify
+
+ - text-indent : 문단 들여쓰기
+	크기 단위로 지정
+
+ - text-decoration : 글자 꾸미기
+	none : 없음
+	line-through : 취소선
+	underline : 밑줄
+	overline : 윗줄
+
+
+ - line-height : 줄 간격
+	인라인 요소의 높이
+
+	% 단위로 주로 지정한다
+
+	정수로 배수로 표현하기도 한다
+
+	ex)
+		line-height: 140%;
+		lien-height: 1.4;

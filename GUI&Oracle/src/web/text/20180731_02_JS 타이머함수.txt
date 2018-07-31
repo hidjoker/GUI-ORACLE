@@ -1,0 +1,19 @@
+ + 타이머 함수
+
+  - setInterval(func, millis) : timerId
+	지정된 밀리초마다 func 수행(반복)
+	타이머객체의 ID를 반환한다
+
+  - setTimeout(func, millis) : timerId
+	지정된 밀리초 이후에 func 수행(한번)
+	타이머객체의 ID를 반환한다
+
+  - clearInterval(timerId)
+	지정된 timerId를 즉시 종료시킨다
+
+  ** 세 함수는 window 전역객체 포함되어있다
+  ** 자바스크립트 코드에서 window. 은 생략가능
+
+	window.setInterval( func, 1000 );
+
+	=> setInterval( func, 1000 );

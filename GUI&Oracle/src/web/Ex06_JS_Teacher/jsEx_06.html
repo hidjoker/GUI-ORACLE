@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+// 자바스크립트의 변수 선언
+//	var 변수명;
+
+var data;
+console.log(data); //undefined
+// console.log(da); // 에러
+
+if( data == undefined ) { // undefined == undefined
+	console.log("변수가 초기화되지 않음")
+}
+
+// undefined 은 데이터타입이 undefined
+// null 은 데이터타입이 Object
+
+// 둘 데이터 사이에 형변환이 일어난다
+if( data == null ) { // undefined == null
+	console.log("변수의 값이 null")
+}
+
+// 데이터타입을 지키며 비교한다
+if( data === null ) { // undefined == null
+	console.log("===로 비교하기")
+}
+
+console.log("-----");
+data = null;
+console.log(data);
+
+console.log("-----");
+console.log( typeof(data) );
+console.log( typeof(undefined) );
+
+data = true;
+console.log( typeof(data) );
+
+data = [];
+console.log( typeof(data) );
+
+data = {};
+console.log( typeof(data) );
+
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+ + 형변환
+  - 자동형변환
+
+	Number + String -> String
+	String + Number -> String
+
+	boolean + String -> String
+
+	boolean + Number -> Number
+	** true==1, false==0
+
+
+  - 강제형변환
+
+	문자 -> 숫자
+
+	parseInt("문자")
+	parseFloat("문자")
+	Number("문자")
+
+
+	숫자 -> 문자
+
+	String(숫자)
+	toString(숫자)
+	toFixed(숫자)
+
+
+
+ + typeof 연산자
+  - 데이터나 변수의 타입을 반환하는 연산자
+
+	ex) console.log( typeof(11) ); -> Number

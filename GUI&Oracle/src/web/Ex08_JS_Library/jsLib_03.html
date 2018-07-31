@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+// Date 객체
+
+var d1 = new Date();
+console.log(d1); // 서식을 갖춘 현재시간
+console.log(Date.now()); // 밀리초 단위의 HWClock
+console.log("-----")
+console.log(d1.getHours()+ "시" );
+console.log(d1.getMinutes() + "분");
+console.log(d1.getSeconds() + "초");
+console.log(d1.getMilliseconds() );
+
+console.log("-----");
+setInterval(function(){
+	var d = new Date();
+	console.log( d.getHours() + "시"
+				+ d.getMinutes() + "분"
+				+ d.getSeconds() + "초");
+}, 1000);
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

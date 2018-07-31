@@ -1,0 +1,24 @@
+
+ + 화면 구현
+	카카오 오븐
+	https://ovenapp.io/
+
+
+ + 클래스 다이어그램
+	AmaterasUML Modeler (설치형)
+	http://amateras.osdn.jp/cgi-bin/fswiki_en/wiki.cgi?page=AmaterasUML
+
+
+ + 시퀀스 다이어그램 
+	카쿠
+	https://cacoo.com/
+
+
+ + DB 설계
+	Aquery Tool
+	http://aquerytool.com/
+	
+	eXerd(평가판 설치 사용)
+	http://ko.exerd.com/
+
+

@@ -1,0 +1,58 @@
+ + JS 데이터타입
+  - Number : 숫자	파랑색
+
+  - String : 문자열	검은색
+
+  - Boolean : 논리	검은색 true/false
+
+  - Object : 객체	{객체}
+
+  - Null : null값	null
+
+  - undefined : 정의되지않음	undefined
+
+  - Array : 배열	[배열요소]
+
+
+
+ + NaN, Not a Number
+  - Number타입으로 사용하려는 시점에 Number가 아닐 경우
+   리턴하는 키워드
+
+  - Boolean isNaN() - NaN인지 검사하는 JS 내장 함수
+
+
+
+ + parseInt()
+  - 정수형으로 숫자를 파싱(추출)하는 함수
+
+  - parseInt("Number")
+	Number 포맷의 정수를 10진수로 인식하여 추출
+	접두어가 "0x"라면 16진수로 인식한다
+
+  - parseInt(Number)
+	Number 데이터에서 정수 추출
+
+	기본은 10진수, 접두어가 0x 면 16진수, 0 이면 8진수
+
+
+ + parseFloat()
+  - 실수형 Number를 추출하여 반환 
+
+
+
+ + Infinity, -Infinity
+  - 양의 무한대, 음의 무한대를 나타내는 키워드
+
+  - isFinite() - Number가 유한한 값인지 검사하는 내장함수
+
+
+
+ + undefined
+  - 초기화 되지 않았음
+  - 선언되지 않았음
+  - 값이 할당되지 않았음
+
+ + null
+  - 값이 없음을 표현
+  - 의도적으로 값을 비워둔 상태

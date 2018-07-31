@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!--
+  + 타이머 함수
+	- setInterval(func, millis) : timerId
+		지정된 밀리초마다 func 수행(반복)
+		타이머 객체의 ID를 반환한다
+	- setTimeout(func, millis) : timeId
+		지정된 밀리초 이후에 func 수행(한번)
+		타이머객체의 ID를 반환한다
+	- clearInterval(timeId)
+		지정된 timeId를 즉시 종료시킨다
+	** 세 함수는 window 전역객체 포함되어있다
+	** 자바스크립트 코드에서 window. 은 생략가능
+		window.setInterval( func, 1000);
+		=> setInterval( func, 1000);
+ -->
+ 
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+// setInterval 함수
+function hello() {
+	alert("Hello");
+}
+
+// 1초마다 hello 함수 호출하기
+var timerId = setInterval( hello, 1000 );
+
+// setInterval 중단시키기
+function stop(){
+	clearInterval( timerId );
+}
+
+// 5초 뒤에 동작
+setTimeout(stop,5000);
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
