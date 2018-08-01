@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+// --- document 객체가 완성이 되지 않아서 제대로 동작하지 않음 ---
+// var h = document.getElementById("header");
+// console.log(h); // DOM 객체 h 출력
+
+// h.style.color = "red";
+// ------------------------------------------------
+
+// onload -> html문서가 브라우저에 로드되었을 때 발생하는 이벤트 처리
+window.onload = function() {
+	// <body> 내에서 id가 "header"인 요소 찾기
+	var h = document.getElementById("header");
+	console.log(h); // DOM 객체 h 출력
+	
+	h.style.color = "blue";
+};
+
+function chgColor() {
+	var h = document.getElementById("header");
+	console.log(h); // DOM 객체 h 출력
+	
+	h.style.color = "green";
+}
+
+</script></head><body>
+
+<h1 id="header" onclick="chgColor();" >HEADER TEXT</h1>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

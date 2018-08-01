@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function() {
+// 	var btnOk = document.getElementById("btnOk");
+
+	btnOk.onclick = function() {
+		alert("Clicked!!!");
+	};
+};
+
+function btnClick(e) {
+	alert("클릭클릭");
+	console.log(e);
+	e.innerHTML = "HELLO!!!";
+	console.log("idx : " + e.getAttribute("data-idx"));
+}
+</script></head><body>
+
+<button id="btnOk">확인</button>
+
+<button onclick="btnClick(this);" data-idx="5">클릭</button>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

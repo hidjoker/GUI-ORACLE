@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+// DOM 트리 완성 이후에 동작하도록 작성
+window.onload = function() {
+	var img = document.createElement("img");
+	//	src, width, height, alt, title
+	
+	img.src = "mi.jpg";
+	img.width = "200"; // 단위가 이미 px지정되어있음
+	img.setAttribute("height", "150px");
+	
+	img.setAttribute("myAttr", "Apple"); // 비 표준 속성
+	console.log( img.getAttribute("myAttr") );
+	
+	var body = document.body;
+	body.appendChild(img);
+	
+	
+	var imgs = getElementsByTagName("img");
+	imgs[0].getAttribute("idx");
+};
+</script></head><body>
+
+<!-- "data-" 사용자 정의 속성 -->
+<img data-idx="1" />
+<img data-idx="2" />
+<img data-idx="3" />
+<img data-idx="4" />
+<img data-idx="5" />
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+window.onload = function() {
+	console.log( document.body.innerHTML );
+	
+	// innerHTML 에  = 연산자를 이용하면 원래 있던 태그들이 지워짐
+	//	+= 연산자를 이용하면 원래 있던 태그 밑에 추가됨
+	document.body.innerHTML += 
+		"<div>"
+		+"<h1>INNER HTML</h1>"
+		+"</div>";
+	console.log( document.body.innerHTML );
+	
+	var content = document.getElementById("content");
+	content.innerHTML =
+		"<h3>innerHTML</h3>"
+		+ "<p>테스트</p>";
+		+ "<hr>"
+};
+
+</script></head><body>
+
+<div id="content"></div>
+
+</body>
+</html>
+
+
+
+
+
+

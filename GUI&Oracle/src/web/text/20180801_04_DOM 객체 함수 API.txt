@@ -1,0 +1,71 @@
+ + DOM 객체 함수 API
+
+ + Element 생성
+  - document.createElement() : 요소노드 만들기
+  - document.createTextNode() : 텍스트노드 만들기
+
+	ex) document.createElement("div"); //div 요소노드 생성
+		-> <div></div>
+
+
+ + Element 추가
+  - 객체.appendChild() : 객체에 노드 연결(추가)하기
+
+	ex)	var pTag = document.createElement("p");
+		document.body.appendChild(pTag);
+
+ ** document.body
+	HTML문서의 <body>요소노드를 객체로 표현한 예약어
+
+
+ + Element 속성 지정 (프로퍼티 사용하기)
+  - 객체.표준속성 = 속성값;
+	ex) document.body.style = "border: 1px solid black;";
+		--> <body style="border: 1px solid black;">
+
+  - 객체.setAttribute(속성명, 속성값); // 표준속성이 아니어도 가능
+	ex) document.body.setAttribute("id", "main");
+
+
+ + Element 속성값 얻기
+  - 객체.표준속성;
+  - 객체.getAttribute(속성명);
+
+	ex) var bodyStyle = document.body.style;
+
+
+ + innerHTML 속성(프로퍼티)
+  - 객체.innerHTML = "HTML양식 문서(문장)";
+
+	ex) document.body.innerHTML = "<div><p>안녕</p></div>";
+		--> <body>태그 내에 HTML문장에 맞게 객체 생성
+
+		--> <body><div><p>안녕</p></div></body>
+
+  - var h = 객체.innerHTML;
+	h 변수에 객체의 모든 내용이 담긴다
+
+	ex)
+		var h = document.body.innerHTML;
+		h += "<h1>추가내용</h1>";
+
+		document.body.innerHTML = h;
+
+		--> <body>태그에 <h1>태그를 appendChild한 효과
+
+
+ + Element 객체 얻기(탐색)
+  - document.getElementById(id);
+	해당 id를 가지는 요소 객체 반환
+
+  - document.getElementsByName(name);
+	해당 name을 가지는 요소 객체들을 반환 (배열)
+
+  - document.getElementsByTagName(tagName);
+	해당 tag 요소 객체들을 반환 (배열)
+
+
+ + Element 객체 제거
+  - 객체.remove() : 해당 객체가 제거됨
+
+  - 객체.removeChild(node) : 객체의 자식노드 node를 제거

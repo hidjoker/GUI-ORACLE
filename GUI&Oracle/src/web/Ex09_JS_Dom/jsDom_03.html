@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!--
+ 	+ 주요 DOM 객체 타입
+		- Node 객체
+			노드를 다루는 기능 + 프로퍼티를 담은 객체
+			노드를 탐색, 조작, 타입 파악 기능을 사용할 수 있다
+			노드의 계층구조 파악
+			DOM의 최상위 객체
+		- Element 객체
+			텍스트노드, 주석노드를 제외한 나머지 노드
+			태그 노드만 남음
+			태그 노드에 대한 기능 + 프로퍼티 제공
+		- HTMLElement 객체
+			HTML문서에서 사용하는 Element 객체
+		- Document 객체
+			문서 자체를 나타냄
+			Node객체의 하위 객체
+			HTML 문서의 root 객체 : <html>
+			XML 문서의 root 객체
+		- HTMLDocument 객체
+			HTML 문서용 Document 객체
+			<html> 태그
+			HTML 문서의 모든 요소(태그)를 조작할 수 있게 하는 객체
+ -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+
+<body>
+
+<h1 id="header" a="b" width="">HEADER TEXT</h1>
+
+<!-- body 태그의 마지막 부분에 넣어서 -->
+<!-- DOM 객체가 완성된 이후에 자바스크립트 코드가 -->
+<!-- 동작하도록 만들면 document객체를 온전히 사용가능하다 -->
+<script type="text/javascript">
+document.body.style = "border: 1px solid black;";
+
+var h = document.getElementById("header");
+console.log(h); // DOM 객체 h 출력
+
+h.style.color = "red";
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

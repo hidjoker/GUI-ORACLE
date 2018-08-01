@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+
+<body>
+
+<h1 id="header" a="b" width="">HEADER TEXT</h1>
+
+<!-- body 태그의 마지막 부분에 넣어서 -->
+<!-- DOM 객체가 완성된 이후에 자바스크립트 코드가 -->
+<!-- 동작하도록 만들면 document객체를 온전히 사용가능하다 -->
+<script type="text/javascript">
+document.body.style = "border: 1px solid black;";
+
+var h = document.getElementById("header");
+console.log(h); // DOM 객체 h 출력
+
+h.style.color = "red";
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

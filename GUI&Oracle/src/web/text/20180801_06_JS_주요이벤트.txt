@@ -1,0 +1,24 @@
+onchange	요소가 변경될 때
+
+onsubmit	폼이 제출될 때
+onreset		폼이 재설정될 때
+
+onselect	값이 선택되었을 때
+
+onfocus		포커스가 얻었을 때
+onblur		포커스를 잃었을 때
+
+onkeydown	키를 눌렀을 때
+onkeypress	키를 눌렀다가 놓았을 때
+onkeyup		키를 놓았을 때
+
+onclick		마우스를 클릭했을 때
+ondblclick	마우스를 더블클릭했을 때
+
+onmousedown	마우스 버튼을 누르고 있을 때
+onmouseup	마우스를 놓았을 때
+
+onmousemove	마우스 포인트를 이동했을 때
+
+onmouseout	마우스 포인트가 요소의 바깥으로 이동했을 때
+onmouseover	마우스 포인트가 요소로 들어왔을 때
