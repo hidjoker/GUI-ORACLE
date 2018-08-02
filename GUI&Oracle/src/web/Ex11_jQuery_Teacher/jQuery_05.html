@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- jQuery CDN 추가 -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+</head>
+<body>
+
+<div>
+	<span>하나</span>
+	<p>둘</p>
+	<pre>셋</pre>
+	<p>넷</p>
+	<p>다섯</p>
+</div>
+
+<script type="text/javascript">
+
+var $p = $("p");
+$p.css("border", "1px solid red");
+
+console.log($p);
+
+console.log("---------")
+// $p[0].css("color", "blue"); // 안됨
+//	jQuery 객체에서 [idx]로 노드요소를 사용하면
+//	JS 객체로 반환받게 된다 -> 순수JS문법 사용해야함
+
+console.log($p[0]);
+$p[0].style.color = "blue";
+
+console.log("-----------");
+console.log("--- eq ---");
+console.log($p.eq(1)); //jQuery 객체 반환
+console.log("--- get ---");
+console.log($p.get(2)); //JS 객체 반환
+
+var $p2 = $( $p.get(2) ); //JS객체반환 -> jQuery객체로 변환
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

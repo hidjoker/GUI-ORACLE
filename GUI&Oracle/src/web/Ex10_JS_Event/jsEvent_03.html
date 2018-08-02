@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.msg {
+	position : absolute;
+	left : 80px;
+	color : red;
+}
+
+</style>
+
+<script type="text/javascript">
+
+//이번엔 이거 안쓰고 <body>에 작성할게요!
+window.onload = function() {
+	
+};
+
+</script>
+</head>
+<body>
+
+<div>
+
+<form action="#" method="get" id="f">
+
+<label for="userId">아이디</label>
+<input type="text" id="userId" name="userId"/><br>
+
+<div id="warnMsg"></div>
+
+<input type="button" id="btn" value="버튼" />
+
+</form>
+
+</div>
+
+<script type="text/javascript">
+
+// form validation, 폼 데이터 검증
+// 유효간 값을 입력했는지 체크
+// 유효하지 않으면 form을 submit 하지 않는다
+
+var minLen = 4; // 아이디 최소 길이
+var maxLen = 10; // 아이디 최대 길이
+
+var valid = false; // 검증 상태
+
+// id가 userId 인 <input> 태그에서 focus를 잃었을 경우
+// 발생하는 이벤트인 blur를 이용하여 처리하기
+
+userId.addEventListener("blur", function(){
+//	onblur - 포커스 잃으면 발생하는 이벤트
+// 	console.log("userId : onblur 발생"); //이벤트 확인
+
+	validate();
+
+});
+
+// 폼 검증 함수
+function validate() {
+	//validate 코드 작성
+	
+	//   + CASE 1. 문자열 입력 안 했을 때
+	// 	  	메시지 X
+	// 		전송 X
+	// 	   CASE 2. 4~10 길이가 아닌 입력
+	// 		메시지 O
+	// 		전송 X
+	// 	   CASE 3. 4~10 사이의 길이인 입력
+	// 		메시지 X
+	// 		전송 O
+
+	if(userId.value ==""){
+		valid = false;
+		warnMsg.innerHTML = "";
+		warnMsg.style.display = "none"; //div 안보이도록 설정
+		
+		return false;
+	}
+	
+	if(userId.value.length < minLen || userId.value.length > maxLen){
+			// 입력한 아이디가 4글자 미만이거나 10글자 초과일 때
+			valid=false;
+			warnMsg.innerHTML = "아이디는 " + minLen + "~" + maxLen+"자로 입력하세요";
+			warnMsg.style.display = "block"; //div 보이도록 설정
+			warnMsg.setAttribute("class","msg");
+			
+			return false;
+			
+	}else{ //검증 완료(아이디가 4이상 10이하의 길이)		
+		valid = true;
+		warnMsg.innerHTML = "";
+		warnMsg.style.display = "none"; //div 안보이도록 설정
+		
+		return true;
+	}	
+	
+}
+
+btn.addEventListener("click", function(){
+	if(valid){ //검증 상태 확인하고 submit
+		f.submit();
+	}
+});
+
+</script>
+</body>
+</html>

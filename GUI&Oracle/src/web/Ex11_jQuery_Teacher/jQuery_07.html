@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$("div").children()
+		.css("border", "1px solid blue");
+	$("div").children(".strong")
+		.css("border", "1px solid red");
+
+// 	$(".strong").parent()
+// 		.css("border", "1px solid blue");
+// 	$(".strong").parent("ul")
+// 		.css("border", "1px solid red");
+
+// 	$(".strong").parents()
+// 		.css("border", "1px solid blue");
+
+// 	$(".strong").prev()
+// 		.css("border", "1px solid #ccc");
+
+// 	$(".strong").next()
+// 		.css("border", "1px solid #ccc");
+
+// 	$(".strong").prevAll()
+// 		.css("border", "1px solid #ccc");
+
+// 	$(".strong").nextAll()
+// 		.css("border", "1px solid #ccc");
+});
+
+</script></head><body>
+
+<div>
+	<p>셋</p>
+	<p class="strong">넷</p>
+	<p>다섯</p>
+	<p>여섯</p>
+	<ul>
+		<li>셋</li>
+		<li class="strong">넷</li>
+		<li>다섯</li>
+		<li>여섯</li>
+	</ul> 
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

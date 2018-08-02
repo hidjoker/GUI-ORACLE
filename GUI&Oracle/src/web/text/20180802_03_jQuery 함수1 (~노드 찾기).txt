@@ -1,0 +1,80 @@
+ + + + jQuery 사용하기 + + +
+
+ + jQuery Core
+
+	jQuery()
+
+	$()
+
+  - jQuery 문법으로 코드를 시작함을 알리는 키워드
+
+
+ + jQuery 노드 객체 찾기
+  - $(셀렉터)
+  - $(js객체)
+
+  - 셀렉터 또는 js객체에 해당하는 요소노드를 jQuery객체로 반환
+
+
+ + n번째 노드 접근하기
+
+  - $(객체).eq(idx) : idx번째 노드를 jQuery 객체로 반환
+
+  - $(객체).get(idx) : idx번째 노드를 JS 객체로 반환
+
+	var $o1 = $("p").eq(2);
+
+	var o2 = $("p").get(3);
+
+
+ + 순차적으로 노드 접근하기
+
+  - $(객체).each( function( idx, element ) {
+	//요소마다 반복될 코드
+    });
+
+	idx - 객체의 인덱스
+	element - 자바스크립트 노드 객체
+
+	** 코드 내에서 $(this)를 사용하면 현재 반복되고있는
+	 노드를 관리할 수 있게 된다
+
+
+ + 객체 비교하기
+  - $(객체1).is( $(객체2) ) : 객체1이 객체2와 같은지 비교
+	true - 같은 객체
+	false - 다른 객체
+
+
+ + 하위노드 중에서 특정 노드 찾기
+  - $(객체).find( selector )
+	객체의 하위 노드중 selector에 맞는 객체 반환
+
+
+ + 자식 노드 찾기
+	children()
+	children( selector )
+
+ + 부모 노드 찾기
+	parent()
+	parent( selector )
+
+ + 조상 노드 찾기
+	parents()
+	parents( selector )
+
+ + 이전 형제노드 찾기
+	prev()
+	prev( selector )
+
+ + 이전 모든 형제노드 찾기
+	prevAll()
+	prevAll( selector )
+
+ + 다음 형제노드 찾기
+	next()
+	next( selector )
+
+ + 다음 모든 형제노드 찾기
+	nextAll()
+	nextAll( selector )

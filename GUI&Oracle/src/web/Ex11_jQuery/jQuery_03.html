@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- jQuery CDN 배포(추천) -->
+<script type="text/javascript" 
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	console.log( $("body"));
+	console.log( $("#p1"));
+	
+	console.log("---------------")
+	var p1 = document.getElementById("p1"); //JS DOM객체
+	var $p1 = $(p1); // JS DOM객체 -> jQuery 객체
+	
+	console.log(p1);
+	console.log($p1);
+	
+	console.log("--------------")
+	$("#p1").css("border","1px solid red"); //jQuery 문법
+	p3.style.border = "1px solid blue"; // JS 문법
+	
+	$(".p2").css("color","green");
+	$("p:last-child").css("color","gray");
+	
+	$("div:first-child").css("font-size","25px");
+});
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<p id="p1">하이</p>
+	<p class="p2">Hello</p>
+	<p id="p3">Welcome</p>
+</div>
+
+</body>
+</html>

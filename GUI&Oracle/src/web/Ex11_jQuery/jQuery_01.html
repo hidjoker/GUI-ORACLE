@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- 
+ + CDN, Content Delivery Network
+	- 콘텐츠(자료)를 효율적으로 전달하기 위해 준비된 네트워크
+	- 주로 10MB이상의 파일
+
+	- 클라이언트의 파일 요청 병목현상을 해결할 수 있다
+	- 서버의 반복적이고 불필요한 트래픽을 줄여준다
+
+	- 자주 사용되는 콘텐츠(자료)를 네트워크 중간중간에 복사해두고
+	 클라이언트의 요청에 적절한 위치의 콘텐츠를 전송한다
+
+ -->
+<!-- 
++ jQuery
+	- 자바스크립트 DOM을 사용하기 쉽게 문법을 정의한 라이브러리
+	- 순수 자바스크립트 코드보다 효율적, 코드생산성이 향상됨
+	- HTML노드, 스타일, 속성, 이벤트 등을 다룰 수 있다
+	- CSS 선택자를 이용해서 노드를 쉽게 찾을 수 있다
+	- http://www.jquery.com/
+ + jQuery 주요 기능
+	- jQuery DOM : JS DOM 객체를 다루는 기능
+	- jQuery Ajax : Ajax(비동기 통신) 기능
+	- jQuery Event : JS Event 다루는 기능
+	- jQuery plugin : 추가 기능(플러그인)
+	- jQuery Effects : 효과(애니메이션, 모션 등)
+
+  + jQuery 1.x, 2.x, 3.x
+	- 1.x 
+	 :다양한 브라우저에 호환되어 있음
+	 최대한 많은 브라우저에 호환되는 게 목적
+	(브라우저 특징에 맞는 동작이 생략되어있음)
+
+	- 2.x 
+	: 코드 성능, 다양한 기능을 제공하기 위해서 IE8이하는 지원 X
+	 옛 코드 버리고 가볍고 빠르게 만들고 기능도 추가함
+
+	- 3.x
+	: 2.x의 업그레이드 버전. jQuery Compat 3.x 버전은 1.x의 업그레이드 버전
+ 
+  + jQuery 설치
+	1. CDN을 이용한 설치
+		<script type="text/javascript" src="CDN주소"><script>
+		**<script>와 </script> 사이에 아무것도 넣지 않는다
+		- 구글 CDN
+		- 마이크로소프트 CDN
+		- jQuery CDN
+ 		  https://www.jquery.com/jquery-2.2.4.min.js
+	2. 서버의 로컬 파일을 이용한 설치
+		<script type="text/javascript" src="로컬파일경로"></script>
+
+ -->
+
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 서버 로컬 파일 배포하기 -->
+<script type="text/javascript" src="./lib/jquery-2.2.4.min.js"></script>
+
+<!-- jQuery CDN 배포(추천) -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!-- src로 자바스크립트 파일을 추가시키는 경우 -->
+<!-- <script> 태그와 </script> 사이에 아무것도 적으면 안된다! -->
+
+</head>
+<body>
+
+</body>
+</html>

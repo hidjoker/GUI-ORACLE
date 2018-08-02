@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- jQuery CDN 추가 -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("p").each(function() {
+		console.log("HI");
+		console.log("--- this ---");
+		console.log(this);
+		console.log("--- $(this) ---");
+		console.log($(this));
+	});
+	
+	$("p").each(function() {
+		$(this).css("border", "1px solid gray");
+		
+		if( $(this).is( $("#stop") ) ) {
+			return false;
+		}
+	});
+	
+	console.log("----------");
+	$("p").each(function( i, e ) {
+		console.log(i);
+		console.log(e);
+		console.log("-----");
+	});
+	
+	console.log("----------");
+	var $stop = $("div").find("#stop"); // $("div #stop")
+	console.log($stop);
+});
+</script></head><body>
+
+<div>
+	<span>하나</span>
+	<p>둘</p>
+	<pre>셋</pre>
+	<p id="stop">넷</p>
+	<p>다섯</p>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
