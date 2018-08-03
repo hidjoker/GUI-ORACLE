@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<!-- 
+ + 노드 생성
+	- $("노드텍스트")
+	- $(객체).html("노드텍스트")
+		ex) $("<div>") -> <div> 태그 생성
+ + 노드 복사
+	- $(객체).clone() : 복사된 객체를 반환
+		ex) var $div2 = $("#myDiv").clone();
+ + 노드 추가 / 이동
+	- $부모노드.append($추가노드)
+	- $추가노드.appendTo($부모노드)
+		부모노드의 마지막 자식으로 추가노드 삽입
+	- $부모노드.prepend($추가노드)
+	- $추가노드.prependTo($부모노드)
+		부모노드의 첫번째 자식으로 추가노드 삽입
+	- $기준노드.before( $추가노드 )
+	- $추가노드.insertBefore( $기준노드 )
+		추가노드를 기준노드의 이전 형테로 삽입
+	- $기준노드.after( $추가노드 )
+	- $추가노드.insertAfter( $기준노드 )
+		추가노드를 기준노드의 다음 형제로 삽입
+                                                                                                                     
+ + 노드 내용 읽기 / 변경
+	- $객체.html()
+	- $객체.html("태그텍스트")
+	- $객체.text()
+	- $객체.text("텍스트")
+	- 매개변수가 없는 함수는 내용을 읽어오는 데 사용
+	- 매개변수가 있는 함수는 내용을 반영하는 데 사용
+	- html은 태그를 유지하며 처리한다
+	- text는 태그를 단순 텍스트로 처리한다
+ + 노드 스타일 다루기
+	- $(객체).css("스타일속성")
+	- $(객체).css("스타일속성", "스타일값")
+	- $(객체).css(["속성1","속성2", ...]) : 객체 타입으로 반환함
+	- $(객체).css({"속성1":"값1","속성2":"값2",...})
+		한번에 여러 스타일을 설정하기(객체 타입으로 입력함)
+
+ + 클래스 속성 추가 / 삭제
+	- $객체.addClass("클래스명");
+	- $객체.removeClass("클래스명");
+	- $객체.removeClass(); // 클래스 전부 삭제
+ + 모든 속성 다루기
+	- $객체.attr("속성이름") : 속성에 대한 속성값 얻기
+	- $객체.attr("속성이름","속성값") : 속성값 지정
+ -->
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js">></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var $div = $("<div>new Div</div>");
+	var $div2 = $div.clone();
+	
+	$(document.body).prepend($div2);
+	$(document.body).append($div);
+	$("#myDiv").appendTo(document.body);
+	
+	$div2.html("<h1>changed</h1>");
+	$div.text("<h1>changed</h1>");
+	
+});
+
+</script>
+
+</head>
+<body>
+
+<div id="myDiv">
+</div>
+
+</body>
+</html>

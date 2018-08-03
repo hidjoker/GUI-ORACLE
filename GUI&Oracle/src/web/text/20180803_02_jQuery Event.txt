@@ -1,0 +1,53 @@
+
+ + jQuery 이벤트
+
+ ** Deprecated **
+  - bind, unbide
+  - live, die
+  - delegate, undelegate
+  - load, unload
+ ****************
+
+
+  - on, off, one
+
+	$객체.on("이벤트명", function() {
+	  // 이벤트 처리코드 등록
+	});
+
+	$객체.off("이벤트명", function() {
+	  // 이벤트 처리코드 제거
+	});
+
+	$객체.one("이벤트명", function() {
+	  // 1번 반응하는 이벤트 처리코드 등록
+	});
+
+  - trigger
+	이벤트를 발생 시키는 함수 
+
+	$(객체).trigger("이벤트명");
+
+
+	$(객체).trigger("click"); // 클릭 이벤트 발생!
+	( == $객체.click() )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

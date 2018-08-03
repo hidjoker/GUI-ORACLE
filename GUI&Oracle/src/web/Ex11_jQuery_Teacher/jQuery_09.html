@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	var $div = $("<div>new Div</div>");
+	var $div2 = $div.clone();
+	
+	$(document.body).prepend($div2);
+	$(document.body).append($div);
+	$("#myDiv").appendTo(document.body);
+	
+	$div2.html("<h1>changed</h1>");
+	$div.text("<h1>changed</h1>");
+	
+});
+
+</script></head><body>
+
+<div id="myDiv"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

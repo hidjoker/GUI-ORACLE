@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	// p태그를 1개 생성
+	// 내용은 "둘"
+	// insertBefore이용하여 순서에 맞게 추가 하세요!
+	
+	$("<p>둘</p>").insertBefore( $("div p").eq(1) );
+	
+// 	$("div p").eq(1).before( $("<p>둘</p>") );
+});
+</script></head><body>
+
+<div>
+	<p>하나</p>
+	<p>셋</p>
+	<p>넷</p>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#btnAlert").on("click", function() {
+		alert("HOLA");
+		$("<button id='btnOk'>확인</button>").appendTo("div");
+	});
+	
+	// 이벤트가 bind 되는 시점에 #btnOk가 없어서 코드가 무효화됨
+// 	$("#btnOk").on("click", function() {
+// 		alert("HIHI");
+// 	});
+
+	// 이벤트 bind 시점에 "div"는 존재하기 때문에
+	// #btnOk 코드가 남아있다가 리스너로 동작한다
+	// "div #btnOk"
+	$("div").on("click", "#btnOk", function() {
+		alert("HIHI");
+		
+		$("#btnAlert").off(); // 모든 이벤트리스너 삭제
+	});
+});
+</script></head><body>
+<div>
+	<button id="btnAlert">알림</button>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

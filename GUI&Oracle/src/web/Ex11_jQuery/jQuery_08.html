@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js">></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var $div = $("<div>new Div</div>");
+	console.log($div);
+	
+	$("#myDiv").append($div);
+	
+	//JS의 innerHTML 과 같음
+	$("#myDiv").html("<div>html Div</div>")
+	
+	var html = $("#myDiv").html(); // 객체의 내용을 가져옴
+	html += "<div>insert node</div>"; // 노드 내용 추가
+	
+	$("#myDiv").html(html); // 추가된 내용을 적용
+});
+
+</script>
+
+</head>
+<body>
+
+<div id="myDiv">
+</div>
+
+</body>
+</html>

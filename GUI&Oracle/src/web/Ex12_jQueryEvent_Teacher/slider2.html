@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+#sliderbox {
+	margin: 0 auto;
+	position: relative;
+	width: 300px;
+	height: 200px;
+ 	overflow: hidden;
+	border: 1px solid black;
+}
+#slider {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#slider li {
+	position: absolute;
+}
+
+#slider li img {
+	width: 300px;
+	height: 200px;
+}
+</style>
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	// 이미지 전체를 담은 리스트
+	var $slider_list = $("#slider li");
+	
+	// 모든 이미지를 left: 300px으로 보내기 (숨기기)
+	$slider_list.each(function() {
+		$(this).css("left", "300px");
+	});
+	
+	// 첫번째 이미지를 div 안쪽으로 보내기 (첫 이미지 보여주기)
+	$("#slider li:first-child").css("left", 0);
+	
+	// 클릭이 될 때마다 이미지를 한장씩 슬라이드(교체)
+	var curSlide = 0;
+// 	$("#sliderbox").on("click", function() {
+	
+	setInterval(function() {
+		var nextSlide = (curSlide+1) % $slider_list.length;
+		
+// 		$slider_list.eq(curSlide).css("left", "300px");
+// 		$slider_list.eq(nextSlide).css("left", "0px"); 
+
+		$slider_list.eq(nextSlide).css("left", "300px");
+		$slider_list.eq(curSlide).animate({"left": "-=300px"});
+		$slider_list.eq(nextSlide).animate({"left": "-=300px"});
+
+		curSlide++;
+		curSlide = curSlide % $slider_list.length;
+	}, 1000);
+	
+// 	});
+});
+</script>
+</head>
+<body>
+
+<div id="sliderbox">
+	<ul id="slider">
+		<li><img src="http://i.imgur.com/viuPHoS.gif"/></li>
+		<li><img src="http://i.imgur.com/i7sW1WN.jpg"/></li>
+		<li><img src="http://i.imgur.com/MrZcQnN.jpg"/></li>
+		<li><img src="http://i.imgur.com/hhsrPwq.jpg"/></li>
+		<li><img src="http://i.imgur.com/RstXW7v.jpg"/></li>
+	</ul>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
