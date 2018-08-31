@@ -1,0 +1,7 @@
+sql 疙飞绢
+ - sqlplus /nolog
+ - conn system/1234;
+ - create user manol identified by 123;
+ - grant resource, create session, connect to mano;
+
+db 立加 - semi 积己(manol/123)

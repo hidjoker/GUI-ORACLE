@@ -1,0 +1,134 @@
+-- class 테이블
+
+
+
+CREATE TABLE CLASS
+(
+    CLASSNAME    VARCHAR2(100)    NOT NULL, 
+    STARTDATE    DATE             NOT NULL, 
+    ENDDATE      DATE             NOT NULL, 
+    SUBJECT      VARCHAR2(200)    NOT NULL, 
+    STUNO        NUMBER           NOT NULL, 
+    TOTAL        NUMBER           NOT NULL, 
+    CONSTRAINT CLASS_PK PRIMARY KEY (CLASSNAME)
+);
+
+
+-- user 테이블
+
+CREATE TABLE USERDATA
+(
+    ID         VARCHAR2(100)    NOT NULL, 
+    PW         VARCHAR2(200)    NOT NULL, 
+    NAME       VARCHAR2(100)    NOT NULL, 
+    CLASS      VARCHAR2(100)    NOT NULL, 
+    PHONE      NUMBER           NOT NULL, 
+    BIRTH      NUMBER           NOT NULL, 
+    EMAIL      VARCHAR2(200)    NOT NULL, 
+    GENDER     VARCHAR2(20)     NOT NULL, 
+    SUBDATE    DATE             NOT NULL, 
+    CONSTRAINT USERDATA_PK PRIMARY KEY (ID)
+);
+
+
+-- board 테이블
+
+CREATE TABLE BOARD
+(
+    BOARDNO      NUMBER            NOT NULL, 
+    WRITERID     VARCHAR2(100)     NOT NULL, 
+    WRITER       VARCHAR2(100)     NOT NULL, 
+    TITLE        VARCHAR2(300)     NOT NULL, 
+    CONTENT      VARCHAR2(4000)    NOT NULL, 
+    HIT          NUMBER            NOT NULL, 
+    BOARDTYPE    VARCHAR2(100)     NOT NULL, 
+    ENABLE       NUMBER            NOT NULL, 
+    INDATE       DATE              NOT NULL, 
+    MSGTO        NUMBER            NOT NULL, 
+    CONSTRAINT BOARD_PK PRIMARY KEY (BOARDNO)
+);
+
+CREATE SEQUENCE BOARD_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+
+-- board_comment 테이블
+
+
+CREATE TABLE COMMENTS
+(
+    COMMENTNO    NUMBER            NOT NULL, 
+    BOARDNO      NUMBER            NOT NULL, 
+    WRITERID     VARCHAR2(100)     NOT NULL, 
+    WRITER       VARCHAR2(100)     NOT NULL, 
+    INDATE       DATE              NOT NULL, 
+    CONTENT      VARCHAR2(1000)    NOT NULL, 
+    CONSTRAINT COMMENTS_PK PRIMARY KEY (COMMENTNO)
+);
+
+CREATE SEQUENCE COMMENTS_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+
+
+
+
+-- board_recommend 테이블
+
+
+
+CREATE TABLE BOARD_RECOMMEND
+(
+    BOARDNO    NUMBER           NOT NULL, 
+    ID         VARCHAR2(100)    NOT NULL
+);
+
+
+-- file_upload 테이블
+
+
+CREATE TABLE UPLOAD
+(
+    FILENO        NUMBER           NOT NULL, 
+    BOARDNO       NUMBER           NOT NULL, 
+    BEFORE        VARCHAR2(500)    NOT NULL, 
+    AFTER         VARCHAR2(500)    NOT NULL, 
+    FILESIZE      NUMBER           NOT NULL, 
+    UPLOADDATE    DATE             NOT NULL, 
+    CONSTRAINT UPLOAD_PK PRIMARY KEY (FILENO)
+);
+
+CREATE SEQUENCE UPLOAD_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+
+
+-- comment_recommend 테이블
+
+
+CREATE TABLE COMMENTS_RECOMMEND
+(
+    COMMENTNO    NUMBER           NOT NULL, 
+    ID           VARCHAR2(100)    NOT NULL, 
+    BOARDNO      NUMBER           NOT NULL
+);
+
+
+-- chat 테이블
+
+CREATE TABLE CHAT
+(
+    CHATNo    NUMBER            NOT NULL, 
+    NAME      VARCHAR2(100)     NOT NULL, 
+    MSG       VARCHAR2(3000)    NOT NULL, 
+    INDATE    VARCHAR2(500)     NOT NULL, 
+    CONSTRAINT CHAT_PK PRIMARY KEY (CHATNo)
+);
+
+CREATE SEQUENCE CHAT_SEQ
+START WITH 1
+INCREMENT BY 1;
+
