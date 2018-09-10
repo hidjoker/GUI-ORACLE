@@ -17,7 +17,7 @@
 
 	clear 加己篮 float 加己阑 力芭秦霖促
 
-	clear: left -> float: 坷饶 5:15 2018-07-27left; 加己 力芭
+	clear: left -> float: left; 加己 力芭
 	clear: right -> float: right; 加己 力芭
 	clear: both -> left, right 傈何 力芭
 

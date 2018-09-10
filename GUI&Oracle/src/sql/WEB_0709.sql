@@ -20,7 +20,7 @@ INSERT INTO emp(empno, ename, job, mgr, hiredate, sal, comm, deptno)
 VALUES(1001, 'ALICE', 'CLERK', 1003, '17/01/08', 800, NULL, 30);
 
 SELECT * FROM emp
-WHERE empno=1001;
+WHERE empno=1002;
 
 desc emp;
 INSERT INTO emp
@@ -81,7 +81,7 @@ SELECT * FROM emp WHERE deptno=20;
 -- 30번 부서의 empno, ename 데이터를 INSERT
 INSERT INTO emp_research(empno,ename)
 SELECT empno, ename FROM emp WHERE deptno=30;
-
+SELECT * FROM emp_research;
 -- 데이터 삭제
 DELETE FROM emp_research; --모든 행 삭제
 
@@ -231,7 +231,6 @@ WHEN NOT MATCHED THEN
 SELECT * FROM emp_merge ORDER BY deptno, empno;
 -- DELETE emp_merge;
 -- DROP TABLE emp_merge;
-
 
 --+ 트랜잭션, Transaction
 -- - 데이터를 처리하는 일련의 작업 단위

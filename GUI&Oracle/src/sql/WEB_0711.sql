@@ -47,6 +47,7 @@ CREATE TABLE alter_test(
     ename VARCHAR2(30),
     CONSTRAINT pk_alter_test PRIMARY KEY(empno)
 );
+
 -- emp 테이블에서 empno, ename의 모든 행을 복사
 INSERT INTO alter_test
 SELECT empno, ename FROM emp;
@@ -256,7 +257,7 @@ DROP TABLE alter_test_tb;
 --		EXECUTE : 프로시저 실행 권한
 --	- 객체 권한 확인하기
 --		SELECT * FROM DBA_TAB_PRIVS; -- DBA의 객체권한
---		SELECT * FROM USER_TAP_PRIVS; -- USER의 객체권한
+--		SELECT * FROM USER_TAB_PRIVS; -- USER의 객체권한
 --	- 객체 권한 부여 문법
 --		GRANT 객체권한
 --		ON 객체

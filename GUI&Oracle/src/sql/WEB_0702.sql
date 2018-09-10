@@ -67,6 +67,7 @@ INSERT INTO dept
 VALUES (91,null,null);
 SELECT*FROM dept;
 
+
 -- UPDATE TEST
 UPDATE dept
 SET loc = 'SEOUL';

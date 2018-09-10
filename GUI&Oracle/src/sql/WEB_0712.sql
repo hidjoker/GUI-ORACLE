@@ -44,7 +44,7 @@ WHERE empno < 1000;
 --	ex)
 --		CREATE SEQUENCE seq_emp;
 --		INSERT INTO emp (empno, ename)
---		VALUES (seq_emp.nextval, #{ename});
+--      VALUES (seq_emp.nextval, #{ename});
 
 -- ½ÃÄö½º º¯°æ
 ALTER SEQUENCE seq_emp
